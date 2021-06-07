@@ -3,7 +3,7 @@ import Navi from './Navi'
 
 
 export default function Dashboard() {
-    return (
+    return ( 
         <div>
              <Navi/>
         </div>
