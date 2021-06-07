@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Dashboard from './layouts/Dashboard';
+import 'semantic-ui-css/semantic.min.css'
+import Navi from './layouts/Navi';
+import JobAdvertisementList from './pages/JobAdvertisementList';
+import EmployeeCheckList from './pages/EmployeeCheckList';
+import CandidateCvList from './pages/CandidateCvList';
+import CandidateSchoolList from './pages/CandidateSchoolList';
+import CandidateLanguageList from './pages/CandidateLanguageList';
+import CandidateJobExpList from './pages/CandidateJobExpList';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Dashboard/>
+      <JobAdvertisementList/>
+      <EmployeeCheckList/>
+      <CandidateCvList/>
+      <CandidateSchoolList/>
+      <CandidateLanguageList/>
+      <CandidateJobExpList/>
     </div>
   );
 }
