@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Table } from "semantic-ui-react";
+import { Grid, Table } from "semantic-ui-react";
 import { CandidateJobExpService } from "../services/candidateJobExpService";
 
 export default function CandidateJobExpList() {
   const [candidateJobExps, setcandidateJobExps] = useState([]);
-  
+
   useEffect(() => {
     let candidateJobExpService = new CandidateJobExpService();
     candidateJobExpService
@@ -27,7 +27,7 @@ export default function CandidateJobExpList() {
           {candidateJobExps.map((candidateJobExp) => (
             <Table.Row>
               <Table.Cell>{candidateJobExp.companyName}</Table.Cell>
-              <Table.Cell>{candidateJobExp.jobPositionTitle}</Table.Cell>
+              <Table.Cell>{candidateJobExp.jobPosition.title}</Table.Cell>
               <Table.Cell>{candidateJobExp.startingDate}</Table.Cell>
               <Table.Cell>{candidateJobExp.endingDate}</Table.Cell>
             </Table.Row>

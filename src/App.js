@@ -15,12 +15,10 @@ import { Component } from 'react';
 function App() {
   return (
     <div className="App">
-      <JobAdvertisementList/>
-      <EmployeeCheckList/>
-      <CandidateCvList/>
-      <CandidateSchoolList/>
-      <CandidateLanguageList/>
-      <CandidateJobExpList/>     
+      <Navi/>
+      <Container>
+        <Dashboard/>
+      </Container>
     </div>
   );
 }

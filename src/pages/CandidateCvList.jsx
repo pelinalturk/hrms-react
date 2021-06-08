@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { CandidateCvService } from "../services/candidateCvService";
-import { Table } from "semantic-ui-react";
+import { Grid, Table } from "semantic-ui-react";
+import { Header, Image } from 'semantic-ui-react'
 
 export default function CandidateCvList() {
   const [candidateCvs, setcandidateCvs] = useState([]);
@@ -12,27 +13,75 @@ export default function CandidateCvList() {
   }, []);
   return (
     <div>
-      <Table celled>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>id</Table.HeaderCell>
-            <Table.HeaderCell>Github Link</Table.HeaderCell>
-            <Table.HeaderCell>Linkedin Link</Table.HeaderCell>
-            <Table.HeaderCell>Açıklama</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          {candidateCvs.map((candidateCv) => (
-            <Table.Row key={candidateCv.id}>
-              <Table.Cell>{candidateCv.candidateId}</Table.Cell>
-              <Table.Cell>{candidateCv.githublink}</Table.Cell>
-              <Table.Cell>{candidateCv.linkedinlink}</Table.Cell>
-              <Table.Cell>{candidateCv.description}</Table.Cell>
-            </Table.Row>
-          ))}
+      
+          <Table basic='very' celled collapsing>
+    <Table.Header>
+      <Table.Row>
+        <Table.HeaderCell><h3>İletişim Bilgileri</h3></Table.HeaderCell>
+      </Table.Row>
+    </Table.Header>
 
-        </Table.Body>    
-      </Table>
+    <Table.Body>
+      <Table.Row>
+        <Table.Cell>
+          <Header as='h4' image>
+          {candidateCvs.map((candidateCv) => (
+             <Image src={candidateCv.photo} rounded size='mini' />
+          ))}
+           
+            <Header.Content>
+              Pelin Altürk
+            </Header.Content>
+          </Header>
+        </Table.Cell>
+       
+      </Table.Row>
+      <Table.Row>
+        <Table.Cell>
+          <Header as='h4' image>
+          <Image src="https://res.cloudinary.com/pelin/image/upload/v1623170064/github_oz2p8t.png" rounded  />
+            <Header.Content>
+              Github Link
+            </Header.Content>
+          </Header>
+        </Table.Cell>
+        {candidateCvs.map((candidateCv) => (
+             <Table.Cell>{candidateCv.githublink}</Table.Cell>
+            ))}
+       
+      </Table.Row>
+      <Table.Row>
+        <Table.Cell>
+          <Header as='h5' image>
+          <Image src='https://res.cloudinary.com/pelin/image/upload/v1623170078/LinkedIn-Icon-Squircle-Dark_slfavv.png' rounded size='mini' />
+            <Header.Content>
+              Linkedin Link
+            </Header.Content>
+          </Header>
+        </Table.Cell>
+        {candidateCvs.map((candidateCv) => (
+            <Table.Cell>{candidateCv.linkedinlink}</Table.Cell>
+            ))}
+        
+      </Table.Row>
+      <Table.Row>
+        <Table.Cell>
+          <Header as='h4' image>
+            <Header.Content>
+              Açıklama
+            
+            </Header.Content>
+          </Header>
+        </Table.Cell>
+        {candidateCvs.map((candidateCv) => (
+           <Table.Cell>{candidateCv.description}</Table.Cell>
+        ))}
+       
+      </Table.Row>
+    </Table.Body>
+  </Table>
+          
     </div>
+    
   );
 }
