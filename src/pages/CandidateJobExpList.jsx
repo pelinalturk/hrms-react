@@ -4,7 +4,7 @@ import { CandidateJobExpService } from "../services/candidateJobExpService";
 
 export default function CandidateJobExpList() {
   const [candidateJobExps, setcandidateJobExps] = useState([]);
-
+  
   useEffect(() => {
     let candidateJobExpService = new CandidateJobExpService();
     candidateJobExpService
