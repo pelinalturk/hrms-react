@@ -14,7 +14,6 @@ export default function Dashboard() {
         <Grid>
                 <Grid.Row>
                     <Grid.Column width={6}>
-                      <JobAdvertisementList/>
                         <CandidateCvList/> <h4>Yabancı Dil</h4> 
                         <CandidateLanguageList/>
                     </Grid.Column>

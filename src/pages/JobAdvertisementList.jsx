@@ -19,6 +19,8 @@ export default function JobAdvertisementList() {
             <Table.HeaderCell>Pozisyon</Table.HeaderCell>
             <Table.HeaderCell>Açık pozisyon sayısı</Table.HeaderCell>
             <Table.HeaderCell>Son başvuru tarihi</Table.HeaderCell>
+            <Table.HeaderCell>Minimum Maaş</Table.HeaderCell>
+            <Table.HeaderCell>Maximum Maaş</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
@@ -29,6 +31,8 @@ export default function JobAdvertisementList() {
               <Table.Cell>{jobAdvertisement.jobPositionTitle}</Table.Cell>
               <Table.Cell>{jobAdvertisement.countOfOpenPosition}</Table.Cell>
               <Table.Cell>{jobAdvertisement.applicationDeadline}</Table.Cell>
+              <Table.Cell>{jobAdvertisement.minWage}</Table.Cell>
+              <Table.Cell>{jobAdvertisement.maxWage}</Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
