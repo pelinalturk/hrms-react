@@ -21,9 +21,7 @@ function App() {
       <CandidateCvList/>
       <CandidateSchoolList/>
       <CandidateLanguageList/>
-      <CandidateJobExpList/>
-     
-      
+      <CandidateJobExpList/>     
     </div>
   );
 }
