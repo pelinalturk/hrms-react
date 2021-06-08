@@ -22,7 +22,6 @@ function App() {
       <CandidateSchoolList/>
       <CandidateLanguageList/>
       <CandidateJobExpList/>
-      
      
       
     </div>
