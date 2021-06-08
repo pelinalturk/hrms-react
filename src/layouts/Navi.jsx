@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, Menu, Dropdown } from "semantic-ui-react";
-import { Divider, Input, Segment } from "semantic-ui-react";
+import {Input, Segment } from "semantic-ui-react";
 
 export default function Navi() {
   return (
