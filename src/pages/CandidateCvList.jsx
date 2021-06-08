@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { CandidateCvService } from "../services/candidateCvService";
 import { Table } from "semantic-ui-react";
+import { Divider, Image } from 'semantic-ui-react'
 
 export default function CandidateCvList() {
   const [candidateCvs, setcandidateCvs] = useState([]);

@@ -9,17 +9,22 @@ import CandidateCvList from './pages/CandidateCvList';
 import CandidateSchoolList from './pages/CandidateSchoolList';
 import CandidateLanguageList from './pages/CandidateLanguageList';
 import CandidateJobExpList from './pages/CandidateJobExpList';
+import { Container } from 'semantic-ui-react';
+import { Component } from 'react';
 
 function App() {
   return (
     <div className="App">
-      <Dashboard/>
+<Dashboard/>
       <JobAdvertisementList/>
       <EmployeeCheckList/>
       <CandidateCvList/>
       <CandidateSchoolList/>
       <CandidateLanguageList/>
       <CandidateJobExpList/>
+      
+     
+      
     </div>
   );
 }
