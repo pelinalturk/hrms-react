@@ -5,3 +5,33 @@
 .ui.main.container{
   margin-top: 4em;
 }
+
+body {
+  margin: 0;
+  padding: 5;
+  background-color: rgb(78, 8, 87);
+}
+pre {
+  text-align: left;
+  display: inline-block;
+  margin: auto;
+}
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.carousel__container {
+  /* max-width constrains the width of our carousel to 550, but shrinks on small devices */
+  max-width: 1440px;
+  margin: auto;
+}
+
+.carousel__inner-slide {
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  left: 10px;
+  top: 10px;
+  width: 100px;
+  height: 100px;
+}

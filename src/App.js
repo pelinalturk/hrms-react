@@ -9,8 +9,9 @@ import CandidateCvList from './pages/CandidateCvList';
 import CandidateSchoolList from './pages/CandidateSchoolList';
 import CandidateLanguageList from './pages/CandidateLanguageList';
 import CandidateJobExpList from './pages/CandidateJobExpList';
-import { Container } from 'semantic-ui-react';
+import { Container, Menu } from 'semantic-ui-react';
 import { Component } from 'react';
+import SignIn from './layouts/SignIn';
 
 function App() {
   return (
@@ -18,8 +19,9 @@ function App() {
       <Navi/>
       <Container>
         <Dashboard/>
-      </Container>
+      </Container>  
     </div>
+     
   );
 }
 

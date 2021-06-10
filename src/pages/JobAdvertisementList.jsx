@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Icon, Label, Menu, Table } from "semantic-ui-react";
 import { JobAdvertisementService } from "../services/jobAdvertisementService";
+import { Item } from 'semantic-ui-react'
+import { Container, Header, Message, Segment } from "semantic-ui-react";
 
 
 export default function JobAdvertisementList() {
@@ -12,7 +14,7 @@ export default function JobAdvertisementList() {
   },[])
   return (
     <div>
-      <Table celled inverted>
+      {/* <Table celled inverted>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Şirket ismi</Table.HeaderCell>
@@ -55,7 +57,29 @@ export default function JobAdvertisementList() {
             </Table.HeaderCell>
           </Table.Row>
         </Table.Footer>
-      </Table>
+      </Table> */}
+
+{/* <Item.Group>
+<a>
+
+
+{jobAdvertisements.map((jobAdvertisement) => (
+ <Item>
+      <Item.Image size='small' src='/images/wireframe/image.png' />
+      <Item.Content>
+        <Item.Header as='a'>{jobAdvertisement.employerCompanyName}</Item.Header>
+        <Item.Description>
+          <p>{jobAdvertisement.jobPositionTitle}</p>
+          <p>
+            Many people also have their own barometers for what makes a cute
+            dog.
+          </p>
+        </Item.Description>
+      </Item.Content>
+    </Item>
+))}
+   </a>
+  </Item.Group> */}
     </div>
   );
 }
