@@ -25,24 +25,24 @@ export default function Navi() {
         <Menu.Item name="messages" />
         <Menu.Menu position="right">
         {isAuthenticated?<SignedIn signOut={handleSignOut}/>:<SignedOut signIn={handleSignIn}/>}
-           <Dropdown item text="İş Veren">
+           {/* <Dropdown item text="İş Veren">
             <Dropdown.Menu>
               <Dropdown.Item>Giriş Yap</Dropdown.Item>
               <Dropdown.Item>Kayıt Ol</Dropdown.Item>
             </Dropdown.Menu>
-          </Dropdown> 
+          </Dropdown>  */}
           <Menu.Item>
           </Menu.Item>
         </Menu.Menu>
       </Menu>
-      <Segment basic textAlign="center">
+      {/* <Segment basic textAlign="center">
         <Input
           action={{ color: "teal", content: "Search" }}
           icon="search"
           iconPosition="left"
           placeholder="Pozisyon, Firma Adı"
         />
-      </Segment>
+      </Segment> */}
     </div>
   );
 }

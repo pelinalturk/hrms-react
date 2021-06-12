@@ -14,13 +14,14 @@ export default function JobAdvertisementList() {
   },[])
   return (
     <div>
-      {/* <Table celled inverted>
+       <Table celled inverted>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Şirket ismi</Table.HeaderCell>
             <Table.HeaderCell>Pozisyon</Table.HeaderCell>
             <Table.HeaderCell>Açık pozisyon sayısı</Table.HeaderCell>
             <Table.HeaderCell>Son başvuru tarihi</Table.HeaderCell>
+            <Table.HeaderCell>Detay</Table.HeaderCell>
             <Table.HeaderCell>Minimum Maaş</Table.HeaderCell>
             <Table.HeaderCell>Maximum Maaş</Table.HeaderCell>
           </Table.Row>
@@ -33,6 +34,7 @@ export default function JobAdvertisementList() {
               <Table.Cell>{jobAdvertisement.jobPositionTitle}</Table.Cell>
               <Table.Cell>{jobAdvertisement.countOfOpenPosition}</Table.Cell>
               <Table.Cell>{jobAdvertisement.applicationDeadline}</Table.Cell>
+              <Table.Cell>{jobAdvertisement.jobDetail}</Table.Cell>
               <Table.Cell>{jobAdvertisement.minWage}</Table.Cell>
               <Table.Cell>{jobAdvertisement.maxWage}</Table.Cell>
             </Table.Row>
@@ -57,7 +59,7 @@ export default function JobAdvertisementList() {
             </Table.HeaderCell>
           </Table.Row>
         </Table.Footer>
-      </Table> */}
+      </Table> 
 
 {/* <Item.Group>
 <a>

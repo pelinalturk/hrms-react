@@ -1,27 +1,30 @@
 
 import './App.css';
-import Dashboard from './layouts/Dashboard';
 import 'semantic-ui-css/semantic.min.css'
+import Dashboard from './layouts/Dashboard';
 import Navi from './layouts/Navi';
+import AddJobAdvertisement from './pages/AddJobAdvertisement';
+import { Grid } from 'semantic-ui-react';
 import JobAdvertisementList from './pages/JobAdvertisementList';
-import EmployeeCheckList from './pages/EmployeeCheckList';
-import CandidateCvList from './pages/CandidateCvList';
-import CandidateSchoolList from './pages/CandidateSchoolList';
-import CandidateLanguageList from './pages/CandidateLanguageList';
-import CandidateJobExpList from './pages/CandidateJobExpList';
-import { Container, Menu } from 'semantic-ui-react';
-import { Component } from 'react';
-import SignIn from './layouts/SignIn';
-
 function App() {
   return (
-    <div className="App">
-      <Navi/>
-      <Container>
-        <Dashboard/>
-      </Container>  
-    </div>
+     <div className="App">
+       <Navi/>
+       <Grid>
+         <Grid.Row>
+           <Grid.Column></Grid.Column>
+         </Grid.Row>
+       </Grid>
+
+      <Grid>
+        <Grid.Row> 
+          <Grid.Column width="6"><AddJobAdvertisement/></Grid.Column>
+          <Grid.Column width="6"><JobAdvertisementList/></Grid.Column>
+          <Grid.Column width="4"></Grid.Column>
+        </Grid.Row> 
+      </Grid> 
      
+    </div>  
   );
 }
 
