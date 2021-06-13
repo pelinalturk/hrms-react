@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { CandidateCvService } from "../services/candidateCvService";
+import { CandidateCvService } from "../../services/candidate/candidateCvService";
 import { Grid, Table } from "semantic-ui-react";
 import { Header, Image } from 'semantic-ui-react'
 

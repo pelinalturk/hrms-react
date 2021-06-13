@@ -1,16 +1,13 @@
 
 import './App.css';
 import 'semantic-ui-css/semantic.min.css'
-import Dashboard from './layouts/Dashboard';
 import Navi from './layouts/Navi';
-import AddJobAdvertisement from './pages/AddJobAdvertisement';
-import { Grid } from 'semantic-ui-react';
-import JobAdvertisementList from './pages/JobAdvertisementList';
+import ConfirmEmployer from './pages/employer/ConfirmEmployer';
 function App() {
   return (
      <div className="App">
-       <Navi/>
-       <Grid>
+        <Navi/>
+      {/*  <Grid>
          <Grid.Row>
            <Grid.Column></Grid.Column>
          </Grid.Row>
@@ -22,9 +19,9 @@ function App() {
           <Grid.Column width="6"><JobAdvertisementList/></Grid.Column>
           <Grid.Column width="4"></Grid.Column>
         </Grid.Row> 
-      </Grid> 
-     
-    </div>  
+      </Grid>  */}
+     <ConfirmEmployer/>
+    </div>   
   );
 }
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { CandidateSchoolService } from "../services/candidateSchoolService";
+import { CandidateSchoolService } from "../../services/candidate/candidateSchoolService";
 import { Table } from "semantic-ui-react";
 
 export default function CandidateSchoolList() {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Grid, Table } from "semantic-ui-react";
-import { CandidateJobExpService } from "../services/candidateJobExpService";
+import { CandidateJobExpService } from "../../services/candidate/candidateJobExpService";
 
 export default function CandidateJobExpList() {
   const [candidateJobExps, setcandidateJobExps] = useState([]);
