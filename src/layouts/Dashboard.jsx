@@ -4,7 +4,6 @@ import CandidateCvList from "../pages/candidate/CandidateCvList";
 import CandidateJobExpList from "../pages/candidate/CandidateJobExpList";
 import CandidateLanguageList from "../pages/candidate/CandidateLanguageList";
 import CandidateSchoolList from "../pages/candidate/CandidateSchoolList";
-import CardCarousel from "../pages/CardCarousel";
 import JobAdvertisementList from "../pages/jobAdvertisement/JobAdvertisementList";
 import Navi from "./Navi";
 import { Header } from "semantic-ui-react";
@@ -46,7 +45,7 @@ export default function Dashboard() {
         <Grid.Row>
           <GridColumn width="4"></GridColumn>
           <Grid.Column width="8">
-            <CardCarousel />
+
           </Grid.Column>
           <GridColumn width="4"></GridColumn>
         </Grid.Row>

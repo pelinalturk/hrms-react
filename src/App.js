@@ -8,7 +8,6 @@ import JobAdvertisementList from './pages/jobAdvertisement/JobAdvertisementList'
 import ConfirmJobAdvertisementList from './pages/jobAdvertisement/ConfirmJobAdvertisementList';
 import AddJobAdvertisement from './pages/jobAdvertisement/AddJobAdvertisement'
 import { Grid } from "semantic-ui-react";
-import CardCarousel from './pages/CardCarousel';
 import PositionLevel from './layouts/PositionLevel';
 import JobTitleList from './pages/JobTitleList'
 import JobTitle from './pages/jobTitle/JobTitle'
