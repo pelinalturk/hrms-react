@@ -15,7 +15,6 @@ export default function SignedIn({signOut}) {
                     </Dropdown.Menu>
                 </Dropdown>
             </Menu.Item>
-            <SignUp/>
         </div>
     )
 }

@@ -7,15 +7,10 @@ import {MannerOfWorkService} from "../../services/jobAdvertisement/mannerOfWorkS
 import {JobTitleService} from "../../services/jobTitleService"
 import * as moment from 'moment'
 import axios from "axios";
+import {PositionLevelService} from "../../services/jobAdvertisement/jobPositionLevelService"
 
 
 export default function AddJobAdvertisement() {
-    /* const [addJobAdverts, setAddJobAdverts] = useState([])
-
-  useEffect(() => {
-    let jobAdvertisementService = new JobAdvertisementService();
-    jobAdvertisementService.addJobAdvertisement().then((result) => setAddJobAdverts(result.data.data));
-  }, [])  */
   const url="http://localhost:8080/api/JobAdvertisement/add";
   const [data, setData] = useState({
             employerId:32,
@@ -28,6 +23,7 @@ export default function AddJobAdvertisement() {
             maxWage: "",
             workingHourId: "",
             mannerOfWorkId: "",
+            positionLevelId: "",
   })
 
   function handle(e){
@@ -49,7 +45,8 @@ export default function AddJobAdvertisement() {
       minWage: data.minWage,
       maxWage: data.maxWage,
       workingHourId: data.workingHourId,
-      mannerOfWorkId: data.mannerOfWorkId
+      mannerOfWorkId: data.mannerOfWorkId,
+      positionLevelId: data.positionLevelId
     }).then(result =>{
       console.log(result.data)
     })
@@ -83,6 +80,13 @@ export default function AddJobAdvertisement() {
     jobTitleService.getJobTitles().then((result) => setJobPositions(result.data.data));
   }, []) 
 
+  const [jobPositionLevels, setjobPositionLevels] = useState([])
+  
+  useEffect(() => {
+    let jobPositionLevelService = new PositionLevelService();
+    jobPositionLevelService.getPositionLevel().then((result) => setjobPositionLevels(result.data.data))
+  }, [])
+
   return (
     <div>
       <div>
@@ -97,6 +101,7 @@ export default function AddJobAdvertisement() {
             maxWage: "",
             workingHourId: "",
             mannerOfWorkId: "",
+            positionLevelId: "",
           }}
           validationSchema={Yup.object({
             jobPositionId: Yup.string().required(
@@ -117,6 +122,8 @@ export default function AddJobAdvertisement() {
               .required("Çalışma zamanını seçiniz"),
             mannerOfWorkId: Yup.string()
               .required("Çalışma Şeklini seçiniz"),
+            positionLevelId : Yup.string()
+              .required("Pozisyon Seviyesini seçiniz"),
           })}
           onSubmit={(values, { resetForm, setSubmitting }) => {
             console.log(values);
@@ -293,6 +300,30 @@ export default function AddJobAdvertisement() {
 
               {errors.mannerOfWorkId && touched.mannerOfWorkId && (
                 <div className="input-feedback">{errors.mannerOfWorkId}</div>
+              )}
+
+              <label htmlFor="positionLevelId" className="topMargin">
+                Pozisyon Seviyesi
+              </label>
+              <select
+                id="positionLevelId"
+                value={data.positionLevelId}
+                onChange={(e)=>handle(e)}
+                style={{
+                  marginTop: 10,
+                  width: "150px",
+                  padding: "10px 15px",
+                  outline: "none",
+                }}
+              >
+                <option value="" label="Pozisyon Seviyesini seçiniz" />
+                {jobPositionLevels.map((jobPositionLevel) => (
+                  <option key={jobPositionLevel.id} value={jobPositionLevel.id}>{jobPositionLevel.positionLevel}</option>
+                ))}
+              </select>
+
+              {errors.positionLevelId && touched.positionLevelId && (
+                <div className="input-feedback">{errors.positionLevelId}</div>
               )}
 
               <button type="submit" /*  disabled={!dirty || isSubmitting} */>

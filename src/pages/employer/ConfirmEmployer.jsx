@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { EmployerService } from '../../services/employer/employerService'
+import {EmployerService} from '../../services/employerService' 
 
 export default function ConfirmEmployer() {
   const [employers, setEmployers] = useState([])
@@ -20,7 +20,7 @@ export default function ConfirmEmployer() {
           </thead>
           <tbody>
             {employers.map((employer) => (
-               <tr>
+               <tr key={employer.id}>
                <td>{employer.companyName}</td>
                <td>{employer.webAddress}</td>
                <td>{employer.phoneNumber}</td>

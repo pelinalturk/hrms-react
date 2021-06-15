@@ -3,18 +3,19 @@ import { Icon, Label, Menu, Table } from "semantic-ui-react";
 import { JobAdvertisementService } from "../../services/jobAdvertisement/jobAdvertisementService";
 import { Item } from 'semantic-ui-react'
 import { Container, Header, Message, Segment } from "semantic-ui-react";
-
+import axios from "axios";
 
 export default function JobAdvertisementList() {
-  const [jobAdvertisements, setJobAdvertisements] = useState([]);
 
+  const [ActivejobAdvertisements, setActivejobAdvertisements] = useState([]);
   useEffect(()=>{
       let jobAdvertisementService = new JobAdvertisementService()
-      jobAdvertisementService.getJobAdvertisements().then(result=>setJobAdvertisements(result.data.data))
+      jobAdvertisementService.getJobAdvertisements().then(result=>setActivejobAdvertisements(result.data.data))
   },[])
   return (
     <div>
-       <Table celled inverted>
+      <h3>Onaylanmış İş İlanları</h3>
+       <Table celled className="customers">
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Şirket ismi</Table.HeaderCell>
@@ -26,17 +27,16 @@ export default function JobAdvertisementList() {
             <Table.HeaderCell>Maximum Maaş</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
-
         <Table.Body>
-          {jobAdvertisements.map((jobAdvertisement) => (
-            <Table.Row>
-              <Table.Cell>{jobAdvertisement.employerCompanyName}</Table.Cell>
-              <Table.Cell>{jobAdvertisement.jobPositionTitle}</Table.Cell>
-              <Table.Cell>{jobAdvertisement.countOfOpenPosition}</Table.Cell>
-              <Table.Cell>{jobAdvertisement.applicationDeadline}</Table.Cell>
-              <Table.Cell>{jobAdvertisement.jobDetail}</Table.Cell>
-              <Table.Cell>{jobAdvertisement.minWage}</Table.Cell>
-              <Table.Cell>{jobAdvertisement.maxWage}</Table.Cell>
+          {ActivejobAdvertisements.map((ActivejobAdvertisement) => (
+            <Table.Row key={ActivejobAdvertisement.id}>
+              <Table.Cell>{ActivejobAdvertisement.jobAdvertisement.employer.companyName}</Table.Cell>
+              <Table.Cell>{ActivejobAdvertisement.jobAdvertisement.jobPosition.title}</Table.Cell>
+              <Table.Cell>{ActivejobAdvertisement.jobAdvertisement.countOfOpenPosition}</Table.Cell>
+              <Table.Cell>{ActivejobAdvertisement.jobAdvertisement.applicationDeadline}</Table.Cell>
+              <Table.Cell>{ActivejobAdvertisement.jobAdvertisement.jobDetail}</Table.Cell>
+              <Table.Cell>{ActivejobAdvertisement.jobAdvertisement.minWage}</Table.Cell>
+              <Table.Cell>{ActivejobAdvertisement.jobAdvertisement.maxWage}</Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
@@ -60,28 +60,6 @@ export default function JobAdvertisementList() {
           </Table.Row>
         </Table.Footer>
       </Table> 
-
-{/* <Item.Group>
-<a>
-
-
-{jobAdvertisements.map((jobAdvertisement) => (
- <Item>
-      <Item.Image size='small' src='/images/wireframe/image.png' />
-      <Item.Content>
-        <Item.Header as='a'>{jobAdvertisement.employerCompanyName}</Item.Header>
-        <Item.Description>
-          <p>{jobAdvertisement.jobPositionTitle}</p>
-          <p>
-            Many people also have their own barometers for what makes a cute
-            dog.
-          </p>
-        </Item.Description>
-      </Item.Content>
-    </Item>
-))}
-   </a>
-  </Item.Group> */}
     </div>
   );
 }

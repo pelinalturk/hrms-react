@@ -19,9 +19,10 @@ export default function JobTitleList() {
       .then((result) => setjobTitles(result.data.data));
   }, []);
   return (
+    <div>
     <CarouselProvider
-      naturalSlideWidth={100}
-      naturalSlideHeight={100}
+      /* naturalSlideWidth={100}
+      naturalSlideHeight={100} */
       totalSlides={10}
       visibleSlides={8}
       infinite={true}
@@ -38,5 +39,6 @@ export default function JobTitleList() {
       <ButtonBack>Back</ButtonBack>
       <ButtonNext>Next</ButtonNext>
     </CarouselProvider>
+    </div>
   );
 }
