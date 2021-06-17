@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 
-export default function SignIn() {
+export default function LogIn() {
     return (
         <div>
             <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>

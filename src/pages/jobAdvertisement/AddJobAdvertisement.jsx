@@ -1,95 +1,105 @@
 import { Formik } from "formik";
 import * as Yup from "yup";
 import React, { useEffect, useState } from "react";
-import {CityService} from "../../services/candidate/cityService"
-import {WorkingHourService} from "../../services/jobAdvertisement/workingHourService"
-import {MannerOfWorkService} from "../../services/jobAdvertisement/mannerOfWorkService"
-import {JobTitleService} from "../../services/jobTitleService"
-import * as moment from 'moment'
+import { CityService } from "../../services/candidate/cityService";
+import { WorkingHourService } from "../../services/jobAdvertisement/workingHourService";
+import { MannerOfWorkService } from "../../services/jobAdvertisement/mannerOfWorkService";
+import { JobTitleService } from "../../services/jobTitleService";
 import axios from "axios";
-import {PositionLevelService} from "../../services/jobAdvertisement/jobPositionLevelService"
-
+import { PositionLevelService } from "../../services/jobAdvertisement/jobPositionLevelService";
+import { Grid } from "semantic-ui-react";
 
 export default function AddJobAdvertisement() {
-  const url="http://localhost:8080/api/JobAdvertisement/add";
+  const url = "http://localhost:8080/api/JobAdvertisement/add";
   const [data, setData] = useState({
-            employerId:32,
-            jobPositionId: "",
-            countOfOpenPosition: "",
-            applicationDeadline: "",
-            jobdetail: "",
-            cityId: "",
-            minWage: "",
-            maxWage: "",
-            workingHourId: "",
-            mannerOfWorkId: "",
-            positionLevelId: "",
-  })
+    employerId: 32,
+    jobPositionId: "",
+    countOfOpenPosition: "",
+    applicationDeadline: "",
+    jobdetail: "",
+    cityId: "",
+    minWage: "",
+    maxWage: "",
+    workingHourId: "",
+    mannerOfWorkId: "",
+    positionLevelId: "",
+  });
 
-  function handle(e){
-    const newData={...data}
-    newData[e.target.id] =e.target.value
-    setData(newData)
-    console.log(newData)
+  function handle(e) {
+    const newData = { ...data };
+    newData[e.target.id] = e.target.value;
+    setData(newData);
+    console.log(newData);
   }
 
-  function submit(e){
+  function submit(e) {
     e.preventDefault();
-    axios.post(url,{
-      employerId:32,
-      jobPositionId: data.jobPositionId,
-      countOfOpenPosition: data.countOfOpenPosition,
-      applicationDeadline: "2020-06-13",
-      jobdetail: data.jobdetail,
-      cityId: data.cityId,
-      minWage: data.minWage,
-      maxWage: data.maxWage,
-      workingHourId: data.workingHourId,
-      mannerOfWorkId: data.mannerOfWorkId,
-      positionLevelId: data.positionLevelId
-    }).then(result =>{
-      console.log(result.data)
-    })
+    axios
+      .post(url, {
+        employerId: 32,
+        jobPositionId: data.jobPositionId,
+        countOfOpenPosition: data.countOfOpenPosition,
+        applicationDeadline: data.applicationDeadline,
+        jobdetail: data.jobdetail,
+        cityId: data.cityId,
+        minWage: data.minWage,
+        maxWage: data.maxWage,
+        workingHourId: data.workingHourId,
+        mannerOfWorkId: data.mannerOfWorkId,
+        positionLevelId: data.positionLevelId,
+      })
+      .then((result) => {
+        console.log(result.data);
+      });
   }
 
-   const [cities, setcities] = useState([])
+  const [cities, setcities] = useState([]);
 
   useEffect(() => {
     let cityService = new CityService();
     cityService.getCityService().then((result) => setcities(result.data.data));
-  }, []) 
+  }, []);
 
-  const [workingHours, setworkingHour] = useState([])
+  const [workingHours, setworkingHour] = useState([]);
 
   useEffect(() => {
     let workingHourService = new WorkingHourService();
-    workingHourService.getWorkingHourService().then((result) => setworkingHour(result.data.data));
-  }, []) 
+    workingHourService
+      .getWorkingHourService()
+      .then((result) => setworkingHour(result.data.data));
+  }, []);
 
-  const [mannerOfWorks, setMannerOfWorks] = useState([])
+  const [mannerOfWorks, setMannerOfWorks] = useState([]);
 
   useEffect(() => {
     let mannerOfWorkService = new MannerOfWorkService();
-    mannerOfWorkService.getMannerOfWorkService().then((result) => setMannerOfWorks(result.data.data));
-  }, []) 
+    mannerOfWorkService
+      .getMannerOfWorkService()
+      .then((result) => setMannerOfWorks(result.data.data));
+  }, []);
 
-  const [jobPositions, setJobPositions] = useState([])
+  const [jobPositions, setJobPositions] = useState([]);
 
   useEffect(() => {
     let jobTitleService = new JobTitleService();
-    jobTitleService.getJobTitles().then((result) => setJobPositions(result.data.data));
-  }, []) 
+    jobTitleService
+      .getJobTitles()
+      .then((result) => setJobPositions(result.data.data));
+  }, []);
 
-  const [jobPositionLevels, setjobPositionLevels] = useState([])
-  
+  const [jobPositionLevels, setjobPositionLevels] = useState([]);
+
   useEffect(() => {
     let jobPositionLevelService = new PositionLevelService();
-    jobPositionLevelService.getPositionLevel().then((result) => setjobPositionLevels(result.data.data))
-  }, [])
+    jobPositionLevelService
+      .getPositionLevel()
+      .then((result) => setjobPositionLevels(result.data.data));
+  }, []);
 
   return (
     <div>
       <div>
+      
         <Formik
           initialValues={{
             jobPositionId: "",
@@ -114,16 +124,14 @@ export default function AddJobAdvertisement() {
               "Son başvuru tarihini seçiniz !"
             ),
             jobDetail: Yup.string().required("İş Tanıtımınızı Giriniz "),
-            cityId: Yup.string()
-              .required("Şehir seçiniz"),
+            cityId: Yup.string().required("Şehir seçiniz"),
             minWage: Yup.number().required("Minimum maaş miktarını giriniz !"),
             maxWage: Yup.number().required("Maksimum maaş miktarını giriniz !"),
-            workingHourId: Yup.string()
-              .required("Çalışma zamanını seçiniz"),
-            mannerOfWorkId: Yup.string()
-              .required("Çalışma Şeklini seçiniz"),
-            positionLevelId : Yup.string()
-              .required("Pozisyon Seviyesini seçiniz"),
+            workingHourId: Yup.string().required("Çalışma zamanını seçiniz"),
+            mannerOfWorkId: Yup.string().required("Çalışma Şeklini seçiniz"),
+            positionLevelId: Yup.string().required(
+              "Pozisyon Seviyesini seçiniz"
+            ),
           })}
           onSubmit={(values, { resetForm, setSubmitting }) => {
             console.log(values);
@@ -142,12 +150,15 @@ export default function AddJobAdvertisement() {
             touched,
             isSubmitting,
           }) => (
-            <form onSubmit={(e) => submit(e)} className="bilmemne">
+           
+            <form onSubmit={(e) => submit(e)}>
               <h3>İş İlanı Yayınla</h3>
-              <select
+              
+            
+             <select
                 id="jobPositionId"
                 value={data.jobPositionId}
-                onChange={(e)=>handle(e)}
+                onChange={(e) => handle(e)}
                 style={{
                   marginTop: 10,
                   width: "150px",
@@ -155,23 +166,24 @@ export default function AddJobAdvertisement() {
                   outline: "none",
                 }}
               >
-                <option value="" label="İş Pozisyonu" />
+                <option value="" />
                 {jobPositions.map((jobPosition) => (
-                  <option key={jobPosition.id} value={jobPosition.id} >{jobPosition.title}</option>
-                  ))}
-              </select>
+                  <option key={jobPosition.id} value={jobPosition.id}>
+                    {jobPosition.title}
+                  </option>
+                ))}
+              </select>  
 
               {errors.jobPositionId && touched.jobPositionId && (
                 <div className="input-feedback">{errors.jobPositionId}</div>
               )}
-
               <label htmlFor="countOfOpenPosition">Açık Pozisyon Sayısı</label>
               <input
                 id="countOfOpenPosition"
                 type="number"
                 className="input"
                 value={data.countOfOpenPosition}
-                onChange={(e)=>handle(e)}
+                onChange={(e) => handle(e)}
               />
               {errors.countOfOpenPosition && touched.countOfOpenPosition && (
                 <div className="input-feedback">
@@ -184,8 +196,7 @@ export default function AddJobAdvertisement() {
                 type="date"
                 className="input"
                 value={data.applicationDeadline}
-                onChange={(e)=>handle(e)}
-                
+                onChange={(e) => handle(e)}
               />
               {errors.applicationDeadline && touched.applicationDeadline && (
                 <div className="input-feedback">
@@ -197,7 +208,7 @@ export default function AddJobAdvertisement() {
                 İş Detayı
                 <textarea
                   id="jobdetail"
-                  onChange={(e)=>handle(e)}
+                  onChange={(e) => handle(e)}
                   value={data.jobdetail}
                 >
                   {" "}
@@ -211,7 +222,7 @@ export default function AddJobAdvertisement() {
               <select
                 id="cityId"
                 value={data.cityId}
-                onChange={(e)=>handle(e)}
+                onChange={(e) => handle(e)}
                 style={{
                   marginTop: 10,
                   width: "150px",
@@ -221,46 +232,44 @@ export default function AddJobAdvertisement() {
               >
                 <option value="" label="Şehir Seçiniz.." />
                 {cities.map((city) => (
-                  <option key={city.id} value={city.id} >{city.name}</option>
-                  ))}
+                  <option key={city.id} value={city.id}>
+                    {city.city}
+                  </option>
+                ))}
               </select>
 
               {errors.cityId && touched.cityId && (
                 <div className="input-feedback">{errors.cityId}</div>
               )}
-
-
               <label htmlFor="minWage">Minimum Maaş Miktarı</label>
               <input
                 id="minWage"
                 type="number"
                 className="input"
                 value={data.minWage}
-                onChange={(e)=>handle(e)}
+                onChange={(e) => handle(e)}
               />
               {errors.minWage && touched.minWage && (
                 <div className="input-feedback">{errors.minWage}</div>
               )}
-
               <label htmlFor="maxWage">Maksimum Maaş Miktarı</label>
               <input
                 id="maxWage"
                 type="number"
                 className="input"
                 value={data.maxWage}
-                onChange={(e)=>handle(e)}
+                onChange={(e) => handle(e)}
               />
               {errors.maxWage && touched.maxWage && (
                 <div className="input-feedback">{errors.maxWage}</div>
               )}
-
               <label htmlFor="workingHourId" className="topMargin">
                 Çalışma Zamanı
               </label>
               <select
                 id="workingHourId"
                 value={data.workingHourId}
-                onChange={(e)=>handle(e)}
+                onChange={(e) => handle(e)}
                 style={{
                   marginTop: 10,
                   width: "150px",
@@ -270,21 +279,22 @@ export default function AddJobAdvertisement() {
               >
                 <option value="" label="Çalışma Zamanını Seçiniz.." />
                 {workingHours.map((workingHour) => (
-                  <option key={workingHour.id} value={workingHour.id} >{workingHour.workingHour}</option>
+                  <option key={workingHour.id} value={workingHour.id}>
+                    {workingHour.workingHour}
+                  </option>
                 ))}
               </select>
 
               {errors.workingHourId && touched.workingHourId && (
                 <div className="input-feedback">{errors.workingHourId}</div>
               )}
-
               <label htmlFor="mannerOfWork" className="topMargin">
                 Çalışma Şekli
               </label>
               <select
                 id="mannerOfWorkId"
                 value={data.mannerOfWorkId}
-                onChange={(e)=>handle(e)}
+                onChange={(e) => handle(e)}
                 style={{
                   marginTop: 10,
                   width: "150px",
@@ -294,21 +304,22 @@ export default function AddJobAdvertisement() {
               >
                 <option value="" label="Çalışma şeklini seçiniz" />
                 {mannerOfWorks.map((mannerOfWork) => (
-                  <option key={mannerOfWork.id} value={mannerOfWork.id}>{mannerOfWork.mannerOfWork}</option>
+                  <option key={mannerOfWork.id} value={mannerOfWork.id}>
+                    {mannerOfWork.mannerOfWork}
+                  </option>
                 ))}
               </select>
 
               {errors.mannerOfWorkId && touched.mannerOfWorkId && (
                 <div className="input-feedback">{errors.mannerOfWorkId}</div>
               )}
-
               <label htmlFor="positionLevelId" className="topMargin">
                 Pozisyon Seviyesi
               </label>
               <select
                 id="positionLevelId"
                 value={data.positionLevelId}
-                onChange={(e)=>handle(e)}
+                onChange={(e) => handle(e)}
                 style={{
                   marginTop: 10,
                   width: "150px",
@@ -318,18 +329,20 @@ export default function AddJobAdvertisement() {
               >
                 <option value="" label="Pozisyon Seviyesini seçiniz" />
                 {jobPositionLevels.map((jobPositionLevel) => (
-                  <option key={jobPositionLevel.id} value={jobPositionLevel.id}>{jobPositionLevel.positionLevel}</option>
+                  <option key={jobPositionLevel.id} value={jobPositionLevel.id}>
+                    {jobPositionLevel.positionLevel}
+                  </option>
                 ))}
               </select>
 
               {errors.positionLevelId && touched.positionLevelId && (
                 <div className="input-feedback">{errors.positionLevelId}</div>
               )}
-
-              <button type="submit" /*  disabled={!dirty || isSubmitting} */>
+              <button type="submit" /* disabled={!dirty || isSubmitting} */>
                 Kaydet
               </button>
-            </form>
+            
+            </form> 
           )}
         </Formik>
       </div>

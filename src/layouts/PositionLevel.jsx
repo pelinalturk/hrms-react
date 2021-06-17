@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Popup, Card, Image, Rating } from "semantic-ui-react";
 import { Grid } from "semantic-ui-react";
+import { PositionLevelService } from "../services/jobPositionLevelService";
 export default function PositionLevel() {
+
+  const [positionLevels, setPositionLevels] = useState([])
+
+  useEffect(() => {
+    let jobPositionLevelService = new PositionLevelService();
+    jobPositionLevelService.getPositionLevel().then(result => setPositionLevels(result.data.data))
+  }, [])
   return (
     <div>
       <Grid>
         <Grid.Row>
           <Grid.Column width="2"></Grid.Column>
           <Grid.Column width="4">
-            <Popup
-              trigger={
+              <Popup trigger={
                 <Card>
                   <Image src="https://res.cloudinary.com/pelin/image/upload/v1623689999/womanmanager1_zeluxk.jpg" />
                   <Card.Content>
@@ -17,11 +24,10 @@ export default function PositionLevel() {
                     <Card.Description></Card.Description>
                   </Card.Content>
                 </Card>
-              }
-            >
+              }>
               <Popup.Header>Detay İçin Tıklayınız</Popup.Header>
-            </Popup>{" "}
-          </Grid.Column>
+            </Popup>
+            </Grid.Column>
           <Grid.Column width="4">
             <Popup
               trigger={

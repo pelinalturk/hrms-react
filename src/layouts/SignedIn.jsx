@@ -1,8 +1,7 @@
 import React from 'react'
 import { Dropdown, Image, Menu } from 'semantic-ui-react'
 import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
-import SignIn from './SignIn'
-import SignUp from './SignUp'
+
 export default function SignedIn({signOut}) {
     return (
         <div>

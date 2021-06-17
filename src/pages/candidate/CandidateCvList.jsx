@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { CandidateCvService } from "../../services/candidate/candidateCvService";
 import { Grid, Table } from "semantic-ui-react";
 import { Header, Image } from 'semantic-ui-react'
+import { Button, Card } from 'semantic-ui-react'
+import AcilirMenu from "./AcilirMenu";
+import ContactInformationModal from '../candidateModals/ContactInformationModal'
 
 export default function CandidateCvList() {
   const [candidateCvs, setcandidateCvs] = useState([]);
@@ -13,8 +16,26 @@ export default function CandidateCvList() {
   }, []);
   return (
     <div>
-      
-          <Table basic='very' celled collapsing>
+      <Card.Group>
+      {candidateCvs.map((candidateCv) => (
+    <Card fluid>
+      <Card.Content>
+             <Image
+          floated='right'
+          size='mini'
+         src={candidateCv.photo}
+        />
+        <Card.Header>{candidateCv.candidateFirstName}{candidateCv.candidateLastName}</Card.Header>
+        <Card.Meta>{candidateCv.candidateEmail}</Card.Meta>
+        <Card.Description>
+         {candidateCv.candidateBirthYear}
+        </Card.Description>
+      </Card.Content>
+      <ContactInformationModal/>
+    </Card>
+    ))}
+    </Card.Group>
+         {/*  <Table basic='very' celled collapsing>
     <Table.Header>
       <Table.Row>
         <Table.HeaderCell><h3>İletişim Bilgileri</h3></Table.HeaderCell>
@@ -80,7 +101,7 @@ export default function CandidateCvList() {
       </Table.Row>
     </Table.Body>
   </Table>
-          
+           */}
     </div>
     
   );

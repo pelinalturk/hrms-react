@@ -4,7 +4,7 @@ import {Input, Segment } from "semantic-ui-react";
 import SignedIn from "./SignedIn";
 import SignedOut from "./SignedOut";
 import { useHistory } from "react-router";
-import SignIn from "./SignIn";
+
 
 export default function Navi() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
