@@ -154,14 +154,14 @@ export default function AddJobAdvertisement() {
             <form onSubmit={(e) => submit(e)}>
               <h3>İş İlanı Yayınla</h3>
               
-            
+            <label> <strong>İş Pozisyonu</strong> </label>
              <select
                 id="jobPositionId"
                 value={data.jobPositionId}
                 onChange={(e) => handle(e)}
                 style={{
                   marginTop: 10,
-                  width: "150px",
+                  width: "100%",
                   padding: "10px 15px",
                   outline: "none",
                 }}
@@ -175,57 +175,69 @@ export default function AddJobAdvertisement() {
               </select>  
 
               {errors.jobPositionId && touched.jobPositionId && (
-                <div className="input-feedback">{errors.jobPositionId}</div>
+                <div className={"input-feedback"}>{errors.jobPositionId}</div>
               )}
-              <label htmlFor="countOfOpenPosition">Açık Pozisyon Sayısı</label>
+              <label htmlFor="countOfOpenPosition"> <strong>Açık Pozisyon Sayısı</strong> </label>
               <input
                 id="countOfOpenPosition"
                 type="number"
                 className="input"
                 value={data.countOfOpenPosition}
                 onChange={(e) => handle(e)}
+                style={{
+                  width: "100%",
+                  height:"35px"
+                }}
               />
               {errors.countOfOpenPosition && touched.countOfOpenPosition && (
-                <div className="input-feedback">
+                <div className={"input-feedback"}>
                   {errors.countOfOpenPosition}
                 </div>
               )}
-              <label htmlFor="applicationDeadline">Son Başvuru Tarihi</label>
+              <label htmlFor="applicationDeadline"> <strong>Son Başvuru Tarihi</strong> </label>
               <input
                 id="applicationDeadline"
                 type="date"
                 className="input"
                 value={data.applicationDeadline}
                 onChange={(e) => handle(e)}
+                style={{
+                  width: "100%",
+                }}
               />
               {errors.applicationDeadline && touched.applicationDeadline && (
-                <div className="input-feedback">
+                <div className={"input-feedback"}>
                   {errors.applicationDeadline}
                 </div>
               )}
 
               <label htmlFor="jobdetail">
-                İş Detayı
+              <strong>İş Detayı</strong>
                 <textarea
                   id="jobdetail"
                   onChange={(e) => handle(e)}
                   value={data.jobdetail}
+                  style={{
+                    width: "100%",
+                     minHeight: 100,
+                     maxWidth:600
+                  }}
                 >
                   {" "}
                 </textarea>{" "}
               </label>
 
               {errors.jobdetail && touched.jobdetail && (
-                <div className="input-feedback">{errors.jobdetail}</div>
+                <div className={"input-feedback"}>{errors.jobdetail}</div>
               )}
-
+              <label><strong>Şehir Seçiniz</strong></label>
               <select
                 id="cityId"
                 value={data.cityId}
                 onChange={(e) => handle(e)}
                 style={{
                   marginTop: 10,
-                  width: "150px",
+                  width: "100%",
                   padding: "10px 15px",
                   outline: "none",
                 }}
@@ -239,32 +251,40 @@ export default function AddJobAdvertisement() {
               </select>
 
               {errors.cityId && touched.cityId && (
-                <div className="input-feedback">{errors.cityId}</div>
+                <div className={"input-feedback"}>{errors.cityId}</div>
               )}
-              <label htmlFor="minWage">Minimum Maaş Miktarı</label>
+              <label htmlFor="minWage"> <strong>Minimum Maaş Miktarı</strong> </label>
               <input
                 id="minWage"
                 type="number"
                 className="input"
                 value={data.minWage}
                 onChange={(e) => handle(e)}
+                style={{
+                  width: "100%",
+                  height:"35px"
+                }}
               />
               {errors.minWage && touched.minWage && (
-                <div className="input-feedback">{errors.minWage}</div>
+                <div className={"input-feedback"}>{errors.minWage}</div>
               )}
-              <label htmlFor="maxWage">Maksimum Maaş Miktarı</label>
+              <label htmlFor="maxWage"><strong>Maksimum Maaş Miktarı</strong></label>
               <input
                 id="maxWage"
                 type="number"
                 className="input"
                 value={data.maxWage}
                 onChange={(e) => handle(e)}
+                style={{
+                  width: "100%",
+                  height:"35px"
+                }}
               />
               {errors.maxWage && touched.maxWage && (
-                <div className="input-feedback">{errors.maxWage}</div>
+                <div className={"input-feedback"}>{errors.maxWage}</div>
               )}
               <label htmlFor="workingHourId" className="topMargin">
-                Çalışma Zamanı
+              <strong>Çalışma Zamanı</strong>
               </label>
               <select
                 id="workingHourId"
@@ -272,7 +292,7 @@ export default function AddJobAdvertisement() {
                 onChange={(e) => handle(e)}
                 style={{
                   marginTop: 10,
-                  width: "150px",
+                  width: "100%",
                   padding: "10px 15px",
                   outline: "none",
                 }}
@@ -286,10 +306,10 @@ export default function AddJobAdvertisement() {
               </select>
 
               {errors.workingHourId && touched.workingHourId && (
-                <div className="input-feedback">{errors.workingHourId}</div>
+                <div className={"input-feedback"}>{errors.workingHourId}</div>
               )}
               <label htmlFor="mannerOfWork" className="topMargin">
-                Çalışma Şekli
+              <strong>Çalışma Şekli</strong> 
               </label>
               <select
                 id="mannerOfWorkId"
@@ -297,7 +317,7 @@ export default function AddJobAdvertisement() {
                 onChange={(e) => handle(e)}
                 style={{
                   marginTop: 10,
-                  width: "150px",
+                  width: "100%",
                   padding: "10px 15px",
                   outline: "none",
                 }}
@@ -311,10 +331,10 @@ export default function AddJobAdvertisement() {
               </select>
 
               {errors.mannerOfWorkId && touched.mannerOfWorkId && (
-                <div className="input-feedback">{errors.mannerOfWorkId}</div>
+                <div className={"input-feedback"}>{errors.mannerOfWorkId}</div>
               )}
               <label htmlFor="positionLevelId" className="topMargin">
-                Pozisyon Seviyesi
+              <strong>Pozisyon Seviyesi</strong>
               </label>
               <select
                 id="positionLevelId"
@@ -322,7 +342,7 @@ export default function AddJobAdvertisement() {
                 onChange={(e) => handle(e)}
                 style={{
                   marginTop: 10,
-                  width: "150px",
+                  width: "100%",
                   padding: "10px 15px",
                   outline: "none",
                 }}
@@ -336,12 +356,11 @@ export default function AddJobAdvertisement() {
               </select>
 
               {errors.positionLevelId && touched.positionLevelId && (
-                <div className="input-feedback">{errors.positionLevelId}</div>
+                <div className={"input-feedback"}>{errors.positionLevelId}</div>
               )}
-              <button type="submit" /* disabled={!dirty || isSubmitting} */>
+              <button type="submit"  /* disabled={!dirty || isSubmitting} */>
                 Kaydet
               </button>
-            
             </form> 
           )}
         </Formik>

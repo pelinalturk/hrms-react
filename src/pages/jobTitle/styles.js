@@ -47,7 +47,7 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 85px;
+  height: 75px;
   width: 250px;
   background-color: white;
   box-shadow: -5px 4px 74px -16px rgba(0, 0, 0, 0.15);
@@ -79,15 +79,15 @@ export const ButtonContainer = styled.div`
   position: absolute;
   width: 100px;
   left: 0;
-  height: 85px;
+  height: 150px;
 `;
 
 export const SliderContainer = styled.div`
   position: relative;
-  left: 100px;
+  left: 200px;
   height: 0px;
   padding-top: 0px;
-
+  top: 35px;
   & ul.animating {
     transition: all 900ms ease-in-out;
   }

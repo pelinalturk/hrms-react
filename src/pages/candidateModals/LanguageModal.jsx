@@ -1,19 +1,21 @@
-import React from "react";
-import { Button, Image, Modal } from "semantic-ui-react";
-import ContactInformation from "../candidate/ContactInformation";
-export default function ContactInformationModal() {
-  const [open, setOpen] = React.useState(false);
-  return (
-    <Modal
+import React from 'react'
+import { Button,Modal } from "semantic-ui-react";
+import AddLanguage from "../candidate/AddLanguage"
+export default function LanguageModal() {
+
+    const [open, setOpen] = React.useState(false);
+
+    return (
+        <Modal
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<Button>Düzenle</Button>}
+      trigger={<Button> Ekle</Button>}
     >
       <Modal.Header>İletişim Bilgilerini Düzenle</Modal.Header>
       <Modal.Content>
         <Modal.Description>
-          <ContactInformation />
+          <AddLanguage/>
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
@@ -22,5 +24,5 @@ export default function ContactInformationModal() {
         </Button>
       </Modal.Actions>
     </Modal>
-  );
+    )
 }

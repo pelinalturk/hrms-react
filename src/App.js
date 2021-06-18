@@ -14,11 +14,11 @@ import JobTitle from './pages/jobTitle/JobTitle'
 import SideBar from './layouts/SideBar';
 import Employers from './pages/employer/Employers';
 import Dashboard from './layouts/Dashboard';
-import AddJobPosting from './pages/AddJobPosting'
 import CandidateCvList from './pages/candidate/CandidateCvList'
-import AcilirMenu from './pages/candidate/AcilirMenu';
 import CandidateFullCv from './pages/candidate/CandidateFullCv';
 import ContactInformationModal from './pages/candidateModals/ContactInformationModal'
+import EmployerDetail from './pages/employer/EmployerDetail';
+import CandidateLanguageList from './pages/candidate/CandidateLanguageList';
 function App() {
   return (
      <div className="App">
@@ -63,8 +63,15 @@ function App() {
         </Grid.Row>
       </Grid> */}
      
-   <Dashboard/>
-    
+   
+   {/* <Grid>
+     <Grid.Row>
+       <Grid.Column width="4"></Grid.Column>
+       <Grid.Column width="8"> <AddJobAdvertisement/> </Grid.Column>
+       <Grid.Column width="4"></Grid.Column>
+     </Grid.Row>
+   </Grid> */}
+    <Dashboard/> 
     </div>   
   );
 }

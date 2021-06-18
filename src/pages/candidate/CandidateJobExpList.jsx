@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Table } from "semantic-ui-react";
+import { Grid, Table,Button } from "semantic-ui-react";
 import { CandidateJobExpService } from "../../services/candidate/candidateJobExpService";
-
+import JobExperienceModal from "../candidateModals/JobExperienceModal";
 export default function CandidateJobExpList() {
   const [candidateJobExps, setcandidateJobExps] = useState([]);
 
@@ -20,6 +20,7 @@ export default function CandidateJobExpList() {
             <Table.HeaderCell>Pozisyon</Table.HeaderCell>
             <Table.HeaderCell>Başlangıç Tarihi</Table.HeaderCell>
             <Table.HeaderCell>Bitiş Tarihi</Table.HeaderCell>
+            <Table.HeaderCell></Table.HeaderCell> 
           </Table.Row>
         </Table.Header>
 
@@ -30,9 +31,11 @@ export default function CandidateJobExpList() {
               <Table.Cell>{candidateJobExp.jobPosition.title}</Table.Cell>
               <Table.Cell>{candidateJobExp.startingDate}</Table.Cell>
               <Table.Cell>{candidateJobExp.endingDate}</Table.Cell>
+              <Table.Cell><Button>Sil</Button></Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
+        <Button><JobExperienceModal/></Button>
       </Table>
     </div>
   );

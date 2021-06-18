@@ -3,7 +3,6 @@ import { CandidateCvService } from "../../services/candidate/candidateCvService"
 import { Grid, Table } from "semantic-ui-react";
 import { Header, Image } from 'semantic-ui-react'
 import { Button, Card } from 'semantic-ui-react'
-import AcilirMenu from "./AcilirMenu";
 import ContactInformationModal from '../candidateModals/ContactInformationModal'
 
 export default function CandidateCvList() {
@@ -25,7 +24,7 @@ export default function CandidateCvList() {
           size='mini'
          src={candidateCv.photo}
         />
-        <Card.Header>{candidateCv.candidateFirstName}{candidateCv.candidateLastName}</Card.Header>
+        <Card.Header>{candidateCv.candidateFirstName}{" "}{candidateCv.candidateLastName}</Card.Header>
         <Card.Meta>{candidateCv.candidateEmail}</Card.Meta>
         <Card.Description>
          {candidateCv.candidateBirthYear}

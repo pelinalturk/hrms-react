@@ -1,17 +1,15 @@
+import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function ContactInformation() {
+export default function AddLanguage() {
   const url = "";
   const [data, setData] = useState({
-    id: "5",
-    birthYear: "",
-    email: "",
-    firstName: "",
-    lastName: "",
-    photo: "", //buna başlangıç olarak db deki url yi ver
+    curriculumVitaeId: "5",
+    language: "",
+    languageLevel: "",
   });
 
   function handle(e) {
@@ -25,32 +23,29 @@ export default function ContactInformation() {
     e.preventDefault();
     axios
       .post(url, {
-        id: data.id,
-        birthYear: data.birthYear,
-        email: data.email,
-        firstName: data.firstName,
-        lastName: data.lastName,
+        curriculumVitaeId: data.curriculumVitaeId,
+        language: data.language,
+        languageLevel: data.languageLevel,
       })
       .then((result) => {
         console.log(result.data);
       });
   }
+
   return (
     <div>
       <div>
         <Formik
           initialValues={{
-            birthYear: "",
-            email: "",
-            firstName: "",
-            lastName: "",
-            photo: "",
+            language: "",
+            languageLevel: "",
           }}
           validationSchema={Yup.object({
-            birthYear: Yup.date(),
-            email: Yup.string().email,
-            firstName: Yup.string(),
-            lastName: Yup.string(),
+            language: Yup.string().required("Dil Giriniz !"),
+            languageLevel: Yup.string()
+              .required("Dil Seviyenizi Giriniz !")
+              .min(1)
+              .max(5),
           })}
           onSubmit={(values, { resetForm, setSubmitting }) => {
             console.log(values);
@@ -71,8 +66,7 @@ export default function ContactInformation() {
           }) => (
             <form onSubmit={(e) => submit(e)}>
               <label>
-                {" "}
-                <strong>İsim</strong>{" "}
+                <strong>Dil</strong>
               </label>
               <input
                 type="text"
@@ -84,8 +78,7 @@ export default function ContactInformation() {
                 }}
               ></input>
               <label htmlFor="">
-                {" "}
-                <strong>Soy İsim</strong>{" "}
+                <strong>Dil Seviyesi</strong>
               </label>
               <input
                 type="text"
@@ -95,29 +88,8 @@ export default function ContactInformation() {
                   height: "35px",
                 }}
               />
-              <label htmlFor="">
-                {" "}
-                <strong>Doğum Tarihi</strong>{" "}
-              </label>
-              <input
-                type="date"
-                className="input"
-                style={{
-                  width: "100%",
-                }}
-              />
-              <label htmlFor="">
-                <strong>Email</strong>
-                <input
-                  type="email"
-                  className="input"
-                  style={{
-                    width: "100%",
-                  }}
-                />
-              </label>
               <button type="submit" /* disabled={!dirty || isSubmitting} */>
-                Güncelle
+                Kaydet
               </button>
             </form>
           )}
