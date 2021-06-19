@@ -5,33 +5,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function AddLanguage() {
-  const url = "";
-  const [data, setData] = useState({
-    curriculumVitaeId: "5",
-    language: "",
-    languageLevel: "",
-  });
-
-  function handle(e) {
-    const newData = { ...data };
-    newData[e.target.id] = e.target.value;
-    setData(newData);
-    console.log(newData);
-  }
-
-  function submit(e) {
-    e.preventDefault();
-    axios
-      .post(url, {
-        curriculumVitaeId: data.curriculumVitaeId,
-        language: data.language,
-        languageLevel: data.languageLevel,
-      })
-      .then((result) => {
-        console.log(result.data);
-      });
-  }
-
   return (
     <div>
       <div>
@@ -64,7 +37,7 @@ export default function AddLanguage() {
             touched,
             isSubmitting,
           }) => (
-            <form onSubmit={(e) => submit(e)}>
+            <form onSubmit={handleSubmit}>
               <label>
                 <strong>Dil</strong>
               </label>

@@ -4,37 +4,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function ContactInformation() {
-  const url = "";
-  const [data, setData] = useState({
-    id: "5",
-    birthYear: "",
-    email: "",
-    firstName: "",
-    lastName: "",
-    photo: "", //buna başlangıç olarak db deki url yi ver
-  });
-
-  function handle(e) {
-    const newData = { ...data };
-    newData[e.target.id] = e.target.value;
-    setData(newData);
-    console.log(newData);
-  }
-
-  function submit(e) {
-    e.preventDefault();
-    axios
-      .post(url, {
-        id: data.id,
-        birthYear: data.birthYear,
-        email: data.email,
-        firstName: data.firstName,
-        lastName: data.lastName,
-      })
-      .then((result) => {
-        console.log(result.data);
-      });
-  }
   return (
     <div>
       <div>
@@ -69,7 +38,7 @@ export default function ContactInformation() {
             touched,
             isSubmitting,
           }) => (
-            <form onSubmit={(e) => submit(e)}>
+            <form onSubmit={handleSubmit}>
               <label>
                 {" "}
                 <strong>İsim</strong>{" "}

@@ -25,4 +25,7 @@ export class JobAdvertisementService{
     getByEmployerId(id){
         return axios.get("http://localhost:8080/api/JobAdvertisement/getByEmployerId?id="+id)
     }  
+    getByActiveAndApproved(){
+        return axios.get("http://localhost:8080/api/JobAdvertisement/getByActiveAndConfirm")
+    }
 }

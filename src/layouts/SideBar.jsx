@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
 import { Icon, Menu } from 'semantic-ui-react'
 
 export default class MenuExampleCompactVertical extends Component {
@@ -11,7 +12,7 @@ export default class MenuExampleCompactVertical extends Component {
 
     return (
       <Menu inverted compact icon='labeled' vertical>
-        <Menu.Item
+        <Menu.Item as={NavLink} to="/cv"
           name='gamepad'
           active={activeItem === 'gamepad'}
           onClick={this.handleItemClick}
@@ -24,6 +25,7 @@ export default class MenuExampleCompactVertical extends Component {
           name='handshake'
           active={activeItem === 'handshake'}
           onClick={this.handleItemClick}
+          as={NavLink} to="/employers"
         >
           <Icon name='handshake' />
           İş Verenler
@@ -33,6 +35,7 @@ export default class MenuExampleCompactVertical extends Component {
           name='search'
           active={activeItem === 'search'}
           onClick={this.handleItemClick}
+          as={NavLink} to="/active"
         >
           <Icon name='search' />
           iş ilanları
