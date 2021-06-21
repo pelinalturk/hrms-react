@@ -1,14 +1,10 @@
-import React, { Component } from "react";
-import { Grid, GridColumn } from "semantic-ui-react";
-import JobTitleList from "../pages/JobTitleList";
-import { Link, Switch } from "react-router-dom";
-import SideBar from "../layouts/SideBar";
+import React from "react";
+import { Grid} from "semantic-ui-react";
+import { Switch } from "react-router-dom";
 import { Route } from "react-router";
 import Employers from "../pages/employer/Employers";
 import EmployerDetail from "../pages/employer/EmployerDetail";
 import LogIn from "./LogIn";
-import JobTitle from "../pages/jobTitle/JobTitle";
-import PositionLevel from "./PositionLevel";
 import CandidateFullCv from "../pages/candidate/CandidateFullCv";
 import AddJobAdvertisement from "../pages/jobAdvertisement/AddJobAdvertisement";
 import HomePage from "./HomePage";

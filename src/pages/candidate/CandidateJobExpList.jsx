@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Table,Button } from "semantic-ui-react";
+import {Table,Button } from "semantic-ui-react";
 import { CandidateJobExpService } from "../../services/candidate/candidateJobExpService";
 import JobExperienceModal from "../candidateModals/JobExperienceModal";
 export default function CandidateJobExpList() {

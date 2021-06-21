@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { CandidateLanguageService } from "../services/candidate/candidateLanguageService";
-import { Header, Table, Rating } from "semantic-ui-react";
+import {Table, Rating } from "semantic-ui-react";
 
 export default function CandidateLanguageList() {
   const [candidateLanguages, setcandidateLanguages] = useState([]);

@@ -51,7 +51,6 @@ const [jobAdvertisements, setjobAdvertisements] = useState([]);
                       {jobAdvertisement.countOfOpenPosition}
                     </Table.Cell>
                     <Table.Cell>
-                      {" "}
                       <Button>Detay</Button>
                     </Table.Cell>
                   </Table.Row>

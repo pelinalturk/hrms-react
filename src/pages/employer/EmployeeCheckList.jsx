@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Button, Checkbox, Icon, Table } from "semantic-ui-react";
 import { EmployeeCheckService } from "../../services/employer/employeeCheckService";
 
 export default function EmployeeCheckList() {

@@ -1,6 +1,5 @@
-import React, { Component, useState, useEffect } from "react";
-import { Button, Menu, Dropdown } from "semantic-ui-react";
-import {Input, Segment } from "semantic-ui-react";
+import React, { useState } from "react";
+import {  Menu} from "semantic-ui-react";
 import SignedIn from "./SignedIn";
 import SignedOut from "./SignedOut";
 import { useHistory } from "react-router";

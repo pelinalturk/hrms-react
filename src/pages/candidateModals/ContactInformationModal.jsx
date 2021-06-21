@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Image, Modal } from "semantic-ui-react";
+import { Button, Modal } from "semantic-ui-react";
 import ContactInformation from "../candidate/ContactInformation";
 export default function ContactInformationModal() {
   const [open, setOpen] = React.useState(false);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Popup, Card, Image, Rating } from "semantic-ui-react";
+import { Popup, Card, Image} from "semantic-ui-react";
 import { Grid } from "semantic-ui-react";
 import { PositionLevelService } from "../services/jobPositionLevelService";
 export default function PositionLevel() {

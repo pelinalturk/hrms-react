@@ -4,7 +4,6 @@ import {
   Slide,
   ButtonBack,
   ButtonNext,
-  Image,
 } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import React, { useEffect, useState } from "react";

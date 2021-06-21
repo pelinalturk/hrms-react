@@ -1,7 +1,6 @@
 import { Formik } from "formik";
 import * as Yup from "yup";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 
 export default function ContactInformation() {
   return (

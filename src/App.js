@@ -2,23 +2,8 @@
 import './App.css';
 import 'semantic-ui-css/semantic.min.css'
 import Navi from './layouts/Navi';
-import ConfirmEmployer from './pages/employer/ConfirmEmployer';
-import EmployeeCheckList from './pages/employer/EmployeeCheckList'
-import JobAdvertisementList from './pages/jobAdvertisement/JobAdvertisementList'
 import ConfirmJobAdvertisementList from './pages/jobAdvertisement/ConfirmJobAdvertisementList';
-import AddJobAdvertisement from './pages/jobAdvertisement/AddJobAdvertisement'
-import { Grid } from "semantic-ui-react";
-import PositionLevel from './layouts/PositionLevel';
-import JobTitleList from './pages/JobTitleList'
-import JobTitle from './pages/jobTitle/JobTitle'
-import SideBar from './layouts/SideBar';
-import Employers from './pages/employer/Employers';
-import Dashboard from './layouts/Dashboard';
-import CandidateCvList from './pages/candidate/CandidateCvList'
-import CandidateFullCv from './pages/candidate/CandidateFullCv';
-import ContactInformationModal from './pages/candidateModals/ContactInformationModal'
-import EmployerDetail from './pages/employer/EmployerDetail';
-import CandidateLanguageList from './pages/candidate/CandidateLanguageList';
+import Dashboard from "./layouts/Dashboard.jsx"
 function App() {
   return (
      <div className="App">
@@ -71,7 +56,9 @@ function App() {
        <Grid.Column width="4"></Grid.Column>
      </Grid.Row>
    </Grid> */}
-    <Dashboard/> 
+    {/*  <Dashboard/>   */}
+    <ConfirmJobAdvertisementList/>
+    
     </div>   
   );
 }

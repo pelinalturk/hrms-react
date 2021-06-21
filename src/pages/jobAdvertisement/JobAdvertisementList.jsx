@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Icon, Label, Menu, Table } from "semantic-ui-react";
+import { Icon, Menu, Table } from "semantic-ui-react";
 import { JobAdvertisementService } from "../../services/jobAdvertisement/jobAdvertisementService";
-import { Item } from 'semantic-ui-react'
-import { Container, Header, Message, Segment } from "semantic-ui-react";
-import axios from "axios";
 
 export default function JobAdvertisementList() {
 

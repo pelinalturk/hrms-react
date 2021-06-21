@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-
-import { Image } from "semantic-ui-react";
 import { Grid } from "semantic-ui-react";
 import SideBar from "../../layouts/SideBar";
 import { Table, Button } from "semantic-ui-react";
