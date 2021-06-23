@@ -9,8 +9,8 @@ export class JobAdvertisementService{
         return axios.get("http://localhost:8080/api/JobAdvertisement/getByConfirm?confirm=false")
     }
 
-    changeConfirmed(deneme){
-        return axios.post("http://localhost:8080/api/JobAdvConfirmEmployee/add",deneme)
+    changeConfirmed(value){
+        return axios.post("http://localhost:8080/api/JobAdvConfirmEmployee/add",value)
     }
 
     addJobAdvertisement(value){

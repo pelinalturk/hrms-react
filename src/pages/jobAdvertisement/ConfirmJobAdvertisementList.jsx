@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { JobAdvertisementService } from "../../services/jobAdvertisement/jobAdvertisementService";
 import { Table, Button, Grid } from "semantic-ui-react";
 import SideBar from "../../layouts/SideBar"
+import axios from "axios";
 export default function ConfirmJobAdvertisementList() {
   const [jobAdvertisements, setJobAdvertisements] = useState([]);
 
@@ -12,18 +13,34 @@ export default function ConfirmJobAdvertisementList() {
       .then((result) => setJobAdvertisements(result.data.data));
   }, []);
 
-  let deneme = { 
-    confirmed: true,
+  let postConfirmed = { 
+    confirmed: "",
     employee: "39", 
     jobAdvertisement: {
       id: ""
     } 
   };
 
-  let confirmJob = (deneme) => {
+  const handleConfirmTrue= (id)=>{
+    postConfirmed.jobAdvertisement.id=id
+    postConfirmed.confirmed=true
+    console.log(postConfirmed)
+    /*  let jobAdvertisementService = new JobAdvertisementService();
+    jobAdvertisementService
+      .changeConfirmed(postConfirmed)
+      .then((result) => console.log(result.data));  */
+  }
+
+  const handleConfirmFalse= (id)=>{
+    postConfirmed.jobAdvertisement.id=id
+    postConfirmed.confirmed=false
+    console.log(postConfirmed)
+  }
+
+  const confirmJob = (postConfirmed) => {
     let jobAdvertisementService = new JobAdvertisementService();
     jobAdvertisementService
-      .changeConfirmed(deneme)
+      .changeConfirmed(postConfirmed)
       .then((result) => console.log(result.data));
   };
 
@@ -36,6 +53,7 @@ export default function ConfirmJobAdvertisementList() {
         <Grid.Column width="10">
         <Table className="customers">
         <Table.Row>
+        <Table.Cell>id</Table.Cell>
           <Table.Cell>Şirket İsmi</Table.Cell>
           <Table.Cell>Pozisyon</Table.Cell>
           <Table.Cell>Açık pozisyon sayısı</Table.Cell>
@@ -45,7 +63,8 @@ export default function ConfirmJobAdvertisementList() {
           <Table.Cell>Maximum Maaş</Table.Cell>
         </Table.Row>
         {jobAdvertisements.map((jobAdvertisement) => (
-          <Table.Row deneme={{jobAdvertisement: {id :jobAdvertisement.id}}} key={jobAdvertisement.id}>
+          <Table.Row key={jobAdvertisement.id}>
+            <Table.Cell>{jobAdvertisement.id}</Table.Cell>
             <Table.Cell>{jobAdvertisement.employerCompanyName}</Table.Cell>
             <Table.Cell>{jobAdvertisement.jobPositionTitle}</Table.Cell>
             <Table.Cell>{jobAdvertisement.countOfOpenPosition}</Table.Cell>
@@ -54,11 +73,8 @@ export default function ConfirmJobAdvertisementList() {
             <Table.Cell>{jobAdvertisement.minWage}</Table.Cell>
             <Table.Cell>{jobAdvertisement.maxWage}</Table.Cell>
             <Table.Cell>
-              <Button color={"green"} onClick={() => console.log(deneme)
-              }>
-                Onayla
-              </Button >
-              <Button color={"red"} style={{ marginTop: "0.5em" }}>Reddet</Button>
+              <Button color={"green"} onClick={() =>confirmJob(handleConfirmTrue(jobAdvertisement.id))}>Onayla</Button >
+              <Button color={"red"}  style={{ marginTop: "0.5em" }}>Reddet</Button>
             </Table.Cell>
           </Table.Row>
         ))}
@@ -72,6 +88,11 @@ export default function ConfirmJobAdvertisementList() {
   );
 }
 /* confirmJob(deneme)JSON.stringify(deneme)
-deneme={jobAdvertisement: {id :jobAdvertisement.id}}
- console.log(JSON.stringify(deneme))
+() => console.log(jobAdvertisement.id)
+
+deneme={{jobAdvertisement: {id :jobAdvertisement.id}}}
+{jobAdvertisement: {id :jobAdvertisement.id}}
+{...deneme.jobAdvertisement.id=jobAdvertisement.id}
+ {...deneme.jobAdvertisement.id=jobAdvertisement.id}
+ {...deneme.jobAdvertisement.id = jobAdvertisement.id}
 */
