@@ -25,20 +25,25 @@ export default function ConfirmJobAdvertisementList() {
     postConfirmed.jobAdvertisement.id=id
     postConfirmed.confirmed=true
     console.log(postConfirmed)
-    /*  let jobAdvertisementService = new JobAdvertisementService();
+      let jobAdvertisementService = new JobAdvertisementService();
     jobAdvertisementService
       .changeConfirmed(postConfirmed)
-      .then((result) => console.log(result.data));  */
+      .then((result) => console.log(result.data)); 
   }
 
   const handleConfirmFalse= (id)=>{
     postConfirmed.jobAdvertisement.id=id
     postConfirmed.confirmed=false
     console.log(postConfirmed)
+    let jobAdvertisementService = new JobAdvertisementService();
+    jobAdvertisementService
+      .changeConfirmed(postConfirmed)
+      .then((result) => console.log(result.data)); 
   }
 
   const confirmJob = (postConfirmed) => {
-    let jobAdvertisementService = new JobAdvertisementService();
+    console.log(postConfirmed)
+     let jobAdvertisementService = new JobAdvertisementService();
     jobAdvertisementService
       .changeConfirmed(postConfirmed)
       .then((result) => console.log(result.data));
@@ -73,8 +78,8 @@ export default function ConfirmJobAdvertisementList() {
             <Table.Cell>{jobAdvertisement.minWage}</Table.Cell>
             <Table.Cell>{jobAdvertisement.maxWage}</Table.Cell>
             <Table.Cell>
-              <Button color={"green"} onClick={() =>confirmJob(handleConfirmTrue(jobAdvertisement.id))}>Onayla</Button >
-              <Button color={"red"}  style={{ marginTop: "0.5em" }}>Reddet</Button>
+              <Button color={"green"} onClick={() =>handleConfirmTrue(jobAdvertisement.id)}>Onayla</Button >
+              <Button color={"red"} onClick={() =>handleConfirmFalse(jobAdvertisement.id)}  style={{ marginTop: "0.5em" }}>Reddet</Button>
             </Table.Cell>
           </Table.Row>
         ))}

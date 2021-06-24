@@ -1,20 +1,21 @@
-import React from "react";
+import React from 'react'
 import { Button, Modal } from "semantic-ui-react";
-import AddLanguage from "../candidate/AddLanguage";
-export default function LanguageModal() {
-  const [open, setOpen] = React.useState(false);
+import UpdateLangLevel from '../candidate/UpdateLangLevel';
+
+export default function LanguageUpdateModal() {
+    const [open, setOpen] = React.useState(false);
 
   return (
-    <Modal
+    <Modal style={{width:"400px"}}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<Button> Ekle</Button>}
+      trigger={<Button> Güncelle</Button>}
     >
-      <Modal.Header>Dil Ekle</Modal.Header>
+      <Modal.Header>Dil Seviyesini Güncelle</Modal.Header>
       <Modal.Content>
         <Modal.Description>
-          <AddLanguage />
+          <UpdateLangLevel/>
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>

@@ -4,13 +4,18 @@ import { CandidateJobExpService } from "../../services/candidate/candidateJobExp
 import JobExperienceModal from "../candidateModals/JobExperienceModal";
 export default function CandidateJobExpList() {
   const [candidateJobExps, setcandidateJobExps] = useState([]);
+  let candidateJobExpService = new CandidateJobExpService();
 
   useEffect(() => {
-    let candidateJobExpService = new CandidateJobExpService();
     candidateJobExpService
       .getCandidateJobExpService()
       .then((result) => setcandidateJobExps(result.data.data));
   }, []);
+
+  const deleteJobExperience = (id) => {
+    candidateJobExpService.deleteJobExperience(id).then((result) => console.log(result.data));
+  }
+
   return (
     <div>
       <Table celled fixed singleLine>
@@ -20,7 +25,7 @@ export default function CandidateJobExpList() {
             <Table.HeaderCell>Pozisyon</Table.HeaderCell>
             <Table.HeaderCell>Başlangıç Tarihi</Table.HeaderCell>
             <Table.HeaderCell>Bitiş Tarihi</Table.HeaderCell>
-            <Table.HeaderCell></Table.HeaderCell> 
+            <Table.HeaderCell>Sil</Table.HeaderCell> 
           </Table.Row>
         </Table.Header>
 
@@ -31,7 +36,7 @@ export default function CandidateJobExpList() {
               <Table.Cell>{candidateJobExp.jobPosition.title}</Table.Cell>
               <Table.Cell>{candidateJobExp.startingDate}</Table.Cell>
               <Table.Cell>{candidateJobExp.endingDate}</Table.Cell>
-              <Table.Cell><Button>Sil</Button></Table.Cell>
+              <Table.Cell><Button onClick= {() => deleteJobExperience(candidateJobExp.id)}>Sil</Button></Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>

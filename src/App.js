@@ -56,8 +56,8 @@ function App() {
        <Grid.Column width="4"></Grid.Column>
      </Grid.Row>
    </Grid> */}
-    {/*  <Dashboard/>   */}
-    <ConfirmJobAdvertisementList/>
+     <Dashboard/>   
+    
     
     </div>   
   );

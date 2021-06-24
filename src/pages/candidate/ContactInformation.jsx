@@ -39,10 +39,10 @@ export default function ContactInformation() {
           }) => (
             <form onSubmit={handleSubmit}>
               <label>
-                {" "}
                 <strong>İsim</strong>{" "}
               </label>
               <input
+              defaultValue="Pelin"
                 type="text"
                 style={{
                   marginTop: 10,
@@ -56,6 +56,7 @@ export default function ContactInformation() {
                 <strong>Soy İsim</strong>{" "}
               </label>
               <input
+              value="Altürk"
                 type="text"
                 className="input"
                 style={{

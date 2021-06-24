@@ -10,4 +10,10 @@ export class CandidateLanguageService{
     getLanguageByName(language){
         return axios.get("http://localhost:8080/api/foreignLanguageController/getByLanguage?language=" + language)
     }
+    deleteLanguage(id){
+        return axios.delete(`http://localhost:8080/api/foreignLanguageController/${id}`)
+    }
+    updateLanguage(id,level){//http://localhost:8080/api/foreignLanguageController/2?id=5
+        return axios.put(`http://localhost:8080/api/foreignLanguageController/${level}?${id}`)
+    }
 }

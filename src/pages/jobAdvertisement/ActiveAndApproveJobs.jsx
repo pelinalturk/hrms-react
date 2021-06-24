@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Grid } from "semantic-ui-react";
 import { Table, Button } from "semantic-ui-react";
 import { JobAdvertisementService } from '../../services/jobAdvertisement/jobAdvertisementService';
+import { Link } from 'react-router-dom'
 
 export default function ActiveAndApproveJobs() {
 
@@ -51,7 +52,7 @@ const [jobAdvertisements, setjobAdvertisements] = useState([]);
                       {jobAdvertisement.countOfOpenPosition}
                     </Table.Cell>
                     <Table.Cell>
-                      <Button>Detay</Button>
+                      <Button> <Link to ={`/active/${jobAdvertisement.id}`}> Detay</Link></Button>
                     </Table.Cell>
                   </Table.Row>
                 ))}

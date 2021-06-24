@@ -2,15 +2,25 @@ import React, { useEffect, useState } from "react";
 import { CandidateLanguageService } from "../../services/candidate/candidateLanguageService";
 import { Table, Rating,Button } from "semantic-ui-react";
 import LanguageModal from "../candidateModals/LanguageModal";
+import LanguageUpdateModal from "../candidateModals/LanguageUpdateModal";
+
 export default function CandidateLanguageList() {
   const [candidateLanguages, setcandidateLanguages] = useState([]);
-
+  let candidateLanguageService = new CandidateLanguageService();
   useEffect(() => {
-    let candidateLanguageService = new CandidateLanguageService();
+    
     candidateLanguageService
       .getCandidateLanguageService()
       .then((result) => setcandidateLanguages(result.data.data));
   }, []);
+
+  const deleteLanguage = (id) => {
+    candidateLanguageService.deleteLanguage(id).then((result) => console.log(result.data));
+  }
+
+  const updateLanguage = (id, level) => {
+    candidateLanguageService.updateLanguage(id, level).then((result) => console.log(result.data))
+  }
 
   return (
     <div>
@@ -26,13 +36,13 @@ export default function CandidateLanguageList() {
 
         <Table.Body>
           {candidateLanguages.map((candidateLanguage) => (
-            <Table.Row>
+            <Table.Row key={candidateLanguage.id}>
               <Table.Cell singleLine>{candidateLanguage.language}</Table.Cell>
               <Table.Cell>
                 <Rating icon="star" defaultRating={candidateLanguage.languageLevel} maxRating={5} disabled />
               </Table.Cell>
-              <Table.Cell><Button>Sil</Button></Table.Cell>
-              <Table.Cell><Button>Güncelle</Button></Table.Cell>
+              <Table.Cell><Button onClick={() =>deleteLanguage(candidateLanguage.id)}>Sil</Button></Table.Cell>
+              <Table.Cell><LanguageUpdateModal/></Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
