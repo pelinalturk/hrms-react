@@ -9,17 +9,33 @@ import { addToFavorite } from '../../store/actions/FavoriteActions';
 
 export default function ActiveAndApproveJobsDetail() {
     let { id } = useParams();
+    let jobAdvertisementService = new JobAdvertisementService();
+
+    let favoriteJob = {
+      candidate: {
+        id:""
+      },
+      jobAdvertisement: {
+        id
+      }
+    }
+
+    const addFavoriteJob = (id) =>{
+      favoriteJob.candidate.id=5
+      favoriteJob.jobAdvertisement.id=id
+      jobAdvertisementService.addFavoriteJob(favoriteJob).then((result) => console.log(result.data)); 
+    }
+
    const dispatch = useDispatch()
     const [jobAdvertisement, setJobAdvertisement] = useState({})
 
     useEffect(() => {
-        let jobAdvertisementService = new JobAdvertisementService();
         jobAdvertisementService
           .getById(id)
           .then((result) => setJobAdvertisement(result.data));
       }, [id]);
     
-      const handleAddToFavorite = (product) => {
+      const handleAddToFavorite = (jobAdvertisement) => {
           dispatch(addToFavorite(jobAdvertisement));
       }
     return (
@@ -93,7 +109,8 @@ export default function ActiveAndApproveJobsDetail() {
                     </Table.Cell>
                     <Table.Cell>
                         <Button style={{marginRight:"1em"}} 
-                        onClick={() => handleAddToFavorite(jobAdvertisement)}>Favorilere Ekle</Button>
+                        onClick={() => addFavoriteJob(jobAdvertisement.id)}
+                        >Favorilere Ekle</Button>
               </Table.Cell>
                   </Table.Row>
               </Table.Body>

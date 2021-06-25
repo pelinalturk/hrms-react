@@ -16,7 +16,7 @@ export default function ContactInformation() {
           }}
           validationSchema={Yup.object({
             birthYear: Yup.date(),
-            email: Yup.string().email,
+            email: Yup.string().email(),
             firstName: Yup.string(),
             lastName: Yup.string(),
           })}
@@ -38,11 +38,15 @@ export default function ContactInformation() {
             isSubmitting,
           }) => (
             <form onSubmit={handleSubmit}>
-              <label>
+              <label htmlFor="firstName">
                 <strong>İsim</strong>{" "}
               </label>
               <input
-              defaultValue="Pelin"
+            
+              id="firstName"
+              value={values.firstName}
+              onChange={handleChange}
+              name ="firstName"
                 type="text"
                 style={{
                   marginTop: 10,
@@ -51,12 +55,15 @@ export default function ContactInformation() {
                   outline: "none",
                 }}
               ></input>
-              <label htmlFor="">
-                {" "}
+              <label htmlFor="lastName">
                 <strong>Soy İsim</strong>{" "}
               </label>
               <input
-              value="Altürk"
+              id="lastName"
+           
+              value={values.lastName}
+              onChange={handleChange}
+              name="lastName"
                 type="text"
                 className="input"
                 style={{
@@ -64,20 +71,26 @@ export default function ContactInformation() {
                   height: "35px",
                 }}
               />
-              <label htmlFor="">
-                {" "}
+              <label htmlFor="birthYear">
+                
                 <strong>Doğum Tarihi</strong>{" "}
               </label>
               <input
+              id="birthYear"
                 type="date"
+                value={values.birthYear}
+                onChange={handleChange}
                 className="input"
                 style={{
                   width: "100%",
                 }}
               />
-              <label htmlFor="">
+              <label htmlFor="email">
                 <strong>Email</strong>
                 <input
+                id="email"
+                value={values.email}
+                onChange={handleChange}
                   type="email"
                   className="input"
                   style={{

@@ -4,6 +4,7 @@ import 'semantic-ui-css/semantic.min.css'
 import Navi from './layouts/Navi';
 import ConfirmJobAdvertisementList from './pages/jobAdvertisement/ConfirmJobAdvertisementList';
 import Dashboard from "./layouts/Dashboard.jsx"
+import CitiesFilter from './layouts/filtered/CitiesFilter';
 function App() {
   return (
      <div className="App">
@@ -57,6 +58,7 @@ function App() {
      </Grid.Row>
    </Grid> */}
      <Dashboard/>   
+    
     
     
     </div>   

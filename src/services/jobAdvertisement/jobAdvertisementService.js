@@ -31,4 +31,7 @@ export class JobAdvertisementService{
     getById(id){
         return axios.get("http://localhost:8080/api/JobAdvertisement/getById?id="+id)
     }
+    addFavoriteJob(value){
+        return axios.post("http://localhost:8080/api/candidateFavoritiesController/add",value)
+    }
 }

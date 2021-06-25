@@ -18,9 +18,6 @@ export default function CandidateLanguageList() {
     candidateLanguageService.deleteLanguage(id).then((result) => console.log(result.data));
   }
 
-  const updateLanguage = (id, level) => {
-    candidateLanguageService.updateLanguage(id, level).then((result) => console.log(result.data))
-  }
 
   return (
     <div>
