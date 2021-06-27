@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Grid } from "semantic-ui-react";
-import { Table, Button, Label } from "semantic-ui-react";
+import { Grid, GridColumn } from "semantic-ui-react";
+import { Table, Button, Pagination, Dropdown } from "semantic-ui-react";
 import { JobAdvertisementService } from "../../services/jobAdvertisement/jobAdvertisementService";
 import { Link } from "react-router-dom";
 import CitiesFilter from "../../layouts/filtered/CitiesFilter";
@@ -9,13 +9,29 @@ export default function ActiveAndApproveJobs() {
   const [jobAdvertisements, setjobAdvertisements] = useState([]);
   const [filteredJobAdverts, setFilteredJobAdverts] = useState(null);
   const [selectedCity, setSelectedCity] = useState(null);
-
-  useEffect(() => {
-    let jobAdvertisementService = new JobAdvertisementService();
+  let jobAdvertisementService = new JobAdvertisementService();
+  const [pageNo, setPageNo] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+  let page=10
+ /*  useEffect(() => {
     jobAdvertisementService
-      .getByActiveAndApproved()
+      .getByActiveAndApproved(1, 10)
       .then((result) => setjobAdvertisements(result.data.data));
-  }, []);
+    //pageSize = 10 pageNo=paginationdan tıklanana göre değişmeli
+    //İlanlar listelendiğinde default onarlı sayfalama olmalıdır. Kullanıcılar sayfa adedini
+    //10-20-50-100 şeklinde değiştirebilmelidir. SAYFA ADEDİ ???????
+    //pageSize kısmı heralde combobax içine 10-20-50-100 koy
+  }, []); */
+   useEffect(() => {
+    jobAdvertisementService
+      .getByActiveAndApproved(pageNo)
+      .then((result) => setjobAdvertisements(result.data.data));
+    //pageSize = 10 pageNo=paginationdan tıklanana göre değişmeli
+  }, [pageNo]); 
+
+  const handdleChange = (e, page) => {
+    setPageNo(page.activePage);
+  };
 
   useEffect(() => {
     let filteredJobByJobAdverts;
@@ -29,6 +45,12 @@ export default function ActiveAndApproveJobs() {
     setFilteredJobAdverts(filteredJobByJobAdverts);
   }, [selectedCity]);
 
+  const options = [
+    { key: 10, text: 10, value: 10 },
+    { key: 20, text: 20, value: 20 },
+    { key: 50, text: 50, value: 50 },
+    { key: 100, text: 100, value: 100 },
+  ];
   return (
     <div>
       <Grid>
@@ -109,6 +131,18 @@ export default function ActiveAndApproveJobs() {
                       </Table.Row>
                     ))}
               </Table.Body>
+              <Grid.Row>
+                <GridColumn width="10">
+                  <Pagination
+                    activePage={pageNo}
+                    onPageChange={handdleChange}
+                    totalPages={10}
+                  />
+                </GridColumn>
+                <GridColumn width="3">
+                  <Dropdown selection options={options}></Dropdown>
+                </GridColumn>
+              </Grid.Row>
             </Table>
           </Grid.Column>
         </Grid.Row>

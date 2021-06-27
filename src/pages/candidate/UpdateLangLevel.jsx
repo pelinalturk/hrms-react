@@ -6,8 +6,8 @@ import { CandidateLanguageService } from "../../services/candidate/candidateLang
 export default function UpdateLangLevel() {
   let candidateLanguageService= new CandidateLanguageService();
   const [languages, setlanguages] = useState([]);
-  const updateLanguage = (level, id) => {
-    candidateLanguageService.updateLanguage(level,id).then((result) => console.log(result.data))
+  const updateLanguage = (level) => {
+    candidateLanguageService.updateLanguage(level).then((result) => console.log(result.data))
   }
   return (
     <div>
@@ -15,7 +15,7 @@ export default function UpdateLangLevel() {
         <Formik
           initialValues={{
             level: "",
-            id:"5",
+           // id:"5",
            
           }}
           validationSchema={Yup.object({
@@ -25,9 +25,8 @@ export default function UpdateLangLevel() {
               .max(5),
           })}
           onSubmit={(values, { resetForm }) => {
-           //console.log(values);
-            
-           updateLanguage(values).then((result) => console.log(result.data)) 
+           console.log(values);
+            updateLanguage(values).then((result) => console.log(result.data)) 
             setTimeout(() => {
               resetForm();
             }, 2000);
@@ -44,10 +43,10 @@ export default function UpdateLangLevel() {
           }) => (
             <form onSubmit={handleSubmit}>
               <label htmlFor="level">
-                <strong>Seviye</strong>{" "}
+                <strong>Seviye</strong>
               </label>
               <input
-              id="level"
+                id="level"
                 type="number"
                 onChange={handleChange}
                 value={values.level}

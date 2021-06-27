@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { CandidateLanguageService } from "../../services/candidate/candidateLanguageService";
+import {CandidateLanguageService} from "../../../services/candidate/candidateLanguageService"
 import { Table, Rating,Button } from "semantic-ui-react";
-import LanguageModal from "../candidateModals/LanguageModal";
-import LanguageUpdateModal from "../candidateModals/LanguageUpdateModal";
+import LanguageModal from "../../candidateModals/LanguageModal";
+import LanguageUpdateModal from "../../candidateModals/LanguageUpdateModal";
 
 export default function CandidateLanguageList() {
   const [candidateLanguages, setcandidateLanguages] = useState([]);
@@ -43,7 +43,7 @@ export default function CandidateLanguageList() {
             </Table.Row>
           ))}
         </Table.Body>
-        <Button><LanguageModal/></Button>
+        <LanguageModal/>
       </Table>
     </div>
   );

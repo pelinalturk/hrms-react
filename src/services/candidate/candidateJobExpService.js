@@ -7,4 +7,7 @@ export class CandidateJobExpService{
     deleteJobExperience(id){
         return axios.delete(`http://localhost:8080/api/jobExperiencesController/${id}`)
     }
+    addJobExp(value){
+        return axios.post("http://localhost:8080/api/jobExperiencesController/add",value)
+    }
 }

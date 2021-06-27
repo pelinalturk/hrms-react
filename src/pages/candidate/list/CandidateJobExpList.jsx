@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {Table,Button } from "semantic-ui-react";
-import { CandidateJobExpService } from "../../services/candidate/candidateJobExpService";
-import JobExperienceModal from "../candidateModals/JobExperienceModal";
+import JobExperienceModal from "../../candidateModals/JobExperienceModal";
+import {CandidateJobExpService} from "../../../services/candidate/candidateJobExpService"
 export default function CandidateJobExpList() {
   const [candidateJobExps, setcandidateJobExps] = useState([]);
   let candidateJobExpService = new CandidateJobExpService();
@@ -40,7 +40,7 @@ export default function CandidateJobExpList() {
             </Table.Row>
           ))}
         </Table.Body>
-        <Button><JobExperienceModal/></Button>
+       <JobExperienceModal/>
       </Table>
     </div>
   );

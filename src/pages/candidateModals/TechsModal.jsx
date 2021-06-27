@@ -1,8 +1,9 @@
-import React from "react";
-import { Button, Modal } from "semantic-ui-react";
-import AddLanguage from "../candidate/add/AddLanguage";
-export default function LanguageModal() {
-  const [open, setOpen] = React.useState(false);
+import React from 'react'
+import { Modal, Button } from 'semantic-ui-react';
+import AddTechs from '../candidate/add/AddTechs';
+
+export default function TechsModal() {
+    const [open, setOpen] = React.useState(false);
 
   return (
     <Modal
@@ -11,10 +12,10 @@ export default function LanguageModal() {
       open={open}
       trigger={<Button> Ekle</Button>}
     >
-      <Modal.Header>Dil Ekle</Modal.Header>
+      <Modal.Header>Teknoloji Ekle</Modal.Header>
       <Modal.Content>
         <Modal.Description>
-          <AddLanguage />
+         <AddTechs/>
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>

@@ -4,7 +4,7 @@ import CandidateCvList from "./CandidateCvList";
 import CandidateJobExpList from "./CandidateJobExpList";
 import CandidateLanguageList from "./CandidateLanguageList";
 import CandidateSchoolList from "./CandidateSchoolList"
-import TechnologyList from "./TechnologyList";
+import TechnologyList from "./TechnologyList"
 
 export default function CandidateFullCv() {
   return (

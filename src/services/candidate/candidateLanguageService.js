@@ -13,8 +13,8 @@ export class CandidateLanguageService{
     deleteLanguage(id){
         return axios.delete(`http://localhost:8080/api/foreignLanguageController/${id}`)
     }
-    updateLanguage(level, id){//http://localhost:8080/api/foreignLanguageController/2?id=5
+    updateLanguage(level){//http://localhost:8080/api/foreignLanguageController/2?id=5
         //`http://localhost:8080/api/foreignLanguageController/${level}?${id}`
-        return axios.put(`http://localhost:8080/api/foreignLanguageController/${level}?${id}=`)
+        return axios.put(`http://localhost:8080/api/foreignLanguageController/${level}?id=5`+level)
     }
 }

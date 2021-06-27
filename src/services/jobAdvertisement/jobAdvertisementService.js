@@ -25,13 +25,13 @@ export class JobAdvertisementService{
     getByEmployerId(id){
         return axios.get("http://localhost:8080/api/JobAdvertisement/getByEmployerId?id="+id)
     }  
-    getByActiveAndApproved(){
-        return axios.get("http://localhost:8080/api/JobAdvertisement/getByActiveAndConfirm")
-    }
     getById(id){
         return axios.get("http://localhost:8080/api/JobAdvertisement/getById?id="+id)
     }
     addFavoriteJob(value){
         return axios.post("http://localhost:8080/api/candidateFavoritiesController/add",value)
+    }
+    getByActiveAndApproved(pageNo){//http://localhost:8080/api/JobAdvertisement/getByPage?pageNo=1&pageSize=5
+        return axios.get(`http://localhost:8080/api/JobAdvertisement/getByPage?pageNo=${pageNo}&pageSize=10`)
     }
 }

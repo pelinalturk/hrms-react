@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { CandidateLanguageService } from "../../services/candidate/candidateLanguageService";
+import { CandidateLanguageService } from "../../../services/candidate/candidateLanguageService";
 
 export default function AddLanguage() {
 
@@ -24,7 +24,7 @@ export default function AddLanguage() {
           onSubmit={(values, { resetForm, setSubmitting }) => {
             console.log(values);
             let candidateLanguageService= new CandidateLanguageService()
-            candidateLanguageService.addLanguage(values).then(result => console.log(result.data))
+           candidateLanguageService.addLanguage(values).then(result => console.log(result.data))
               setTimeout(() => {
               resetForm();
             }, 2000);

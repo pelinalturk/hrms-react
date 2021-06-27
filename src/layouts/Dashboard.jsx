@@ -5,7 +5,7 @@ import { Route } from "react-router";
 import Employers from "../pages/employer/Employers";
 import EmployerDetail from "../pages/employer/EmployerDetail";
 import LogIn from "./LogIn";
-import CandidateFullCv from "../pages/candidate/CandidateFullCv";
+import CandidateFullCv from "../pages/candidate/list/CandidateFullCv"
 import AddJobAdvertisement from "../pages/jobAdvertisement/AddJobAdvertisement";
 import HomePage from "./HomePage";
 import ActiveAndApproveJobs from "../pages/jobAdvertisement/ActiveAndApproveJobs";

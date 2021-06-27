@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { CandidateCvService } from "../../services/candidate/candidateCvService";
+import { CandidateCvService } from "../../../services/candidate/candidateCvService";
 import { Image } from 'semantic-ui-react'
 import { Card } from 'semantic-ui-react'
-import ContactInformationModal from '../candidateModals/ContactInformationModal'
+import ContactInformationModal from '../../candidateModals/ContactInformationModal'
 
 export default function CandidateCvList() {
   const [candidateCvs, setcandidateCvs] = useState([]);

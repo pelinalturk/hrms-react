@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { JobAdvertisementService } from "../../services/jobAdvertisement/jobAdvertisementService";
 import { Table, Button, Grid } from "semantic-ui-react";
 import SideBar from "../../layouts/SideBar"
-import axios from "axios";
 export default function ConfirmJobAdvertisementList() {
+  
   const [jobAdvertisements, setJobAdvertisements] = useState([]);
+  let jobAdvertisementService = new JobAdvertisementService();
 
   useEffect(() => {
     let jobAdvertisementService = new JobAdvertisementService();
@@ -24,8 +25,6 @@ export default function ConfirmJobAdvertisementList() {
   const handleConfirmTrue= (id)=>{
     postConfirmed.jobAdvertisement.id=id
     postConfirmed.confirmed=true
-    console.log(postConfirmed)
-      let jobAdvertisementService = new JobAdvertisementService();
     jobAdvertisementService
       .changeConfirmed(postConfirmed)
       .then((result) => console.log(result.data)); 
@@ -34,21 +33,10 @@ export default function ConfirmJobAdvertisementList() {
   const handleConfirmFalse= (id)=>{
     postConfirmed.jobAdvertisement.id=id
     postConfirmed.confirmed=false
-    console.log(postConfirmed)
-    let jobAdvertisementService = new JobAdvertisementService();
     jobAdvertisementService
       .changeConfirmed(postConfirmed)
       .then((result) => console.log(result.data)); 
   }
-
-  const confirmJob = (postConfirmed) => {
-    console.log(postConfirmed)
-     let jobAdvertisementService = new JobAdvertisementService();
-    jobAdvertisementService
-      .changeConfirmed(postConfirmed)
-      .then((result) => console.log(result.data));
-  };
-
   return (
     <div>
       <h3>Onaylanmamış İş İlanları</h3>
@@ -58,7 +46,6 @@ export default function ConfirmJobAdvertisementList() {
         <Grid.Column width="10">
         <Table className="customers">
         <Table.Row>
-        <Table.Cell>id</Table.Cell>
           <Table.Cell>Şirket İsmi</Table.Cell>
           <Table.Cell>Pozisyon</Table.Cell>
           <Table.Cell>Açık pozisyon sayısı</Table.Cell>
@@ -69,7 +56,6 @@ export default function ConfirmJobAdvertisementList() {
         </Table.Row>
         {jobAdvertisements.map((jobAdvertisement) => (
           <Table.Row key={jobAdvertisement.id}>
-            <Table.Cell>{jobAdvertisement.id}</Table.Cell>
             <Table.Cell>{jobAdvertisement.employerCompanyName}</Table.Cell>
             <Table.Cell>{jobAdvertisement.jobPositionTitle}</Table.Cell>
             <Table.Cell>{jobAdvertisement.countOfOpenPosition}</Table.Cell>

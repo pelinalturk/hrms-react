@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {Table,Button } from "semantic-ui-react";
-import { CandidateTechsService } from '../../services/candidate/candidateTechsService';
+import { CandidateTechsService } from '../../../services/candidate/candidateTechsService';
+import TechsModal from '../../candidateModals/TechsModal';
 
 export default function TechnologyList() {
     const [techs, setTechs] = useState([])
@@ -31,9 +32,8 @@ export default function TechnologyList() {
               <Table.Cell><Button onClick = {() => deleteTech(tech.id)}>Sil</Button></Table.Cell>
             </Table.Row>
             ))}
-            
         </Table.Body>
-        <Button></Button>
+        <TechsModal/>
       </Table>
         </div>
     )

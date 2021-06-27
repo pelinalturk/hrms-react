@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Modal } from "semantic-ui-react";
-import AddJobExperience from '../candidate/AddJobExperience';
+import AddJobExperience from '../candidate/add/AddJobExperience';
 export default function JobExperienceModal() {
 
     const [open, setOpen] = React.useState(false)
