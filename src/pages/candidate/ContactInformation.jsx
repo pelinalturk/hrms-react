@@ -1,13 +1,15 @@
 import { Formik } from "formik";
 import * as Yup from "yup";
 import React from "react";
+import { CandidateCvService } from "../../services/candidate/candidateCvService";
 
 export default function ContactInformation() {
-  return (
-    <div>
+  return (//foto 
+    <div> 
       <div>
         <Formik
           initialValues={{
+            id:"5",
             birthYear: "",
             email: "",
             firstName: "",
@@ -22,6 +24,8 @@ export default function ContactInformation() {
           })}
           onSubmit={(values, { resetForm, setSubmitting }) => {
             console.log(values);
+           let candidateCvService = new CandidateCvService()
+           candidateCvService.updateContactInformation(values).then(result => console.log(result.data))
             setTimeout(() => {
               resetForm();
             }, 2000);
@@ -39,7 +43,7 @@ export default function ContactInformation() {
           }) => (
             <form onSubmit={handleSubmit}>
               <label htmlFor="firstName">
-                <strong>İsim</strong>{" "}
+                <strong>İsim</strong>
               </label>
               <input
             
@@ -56,7 +60,7 @@ export default function ContactInformation() {
                 }}
               ></input>
               <label htmlFor="lastName">
-                <strong>Soy İsim</strong>{" "}
+                <strong>Soy İsim</strong>
               </label>
               <input
               id="lastName"
@@ -73,7 +77,7 @@ export default function ContactInformation() {
               />
               <label htmlFor="birthYear">
                 
-                <strong>Doğum Tarihi</strong>{" "}
+                <strong>Doğum Tarihi</strong>
               </label>
               <input
               id="birthYear"

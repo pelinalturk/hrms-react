@@ -4,13 +4,14 @@ import CandidateCvList from "./CandidateCvList";
 import CandidateJobExpList from "./CandidateJobExpList";
 import CandidateLanguageList from "./CandidateLanguageList";
 import CandidateSchoolList from "./CandidateSchoolList"
+import ContactDetails from "./ContactDetails";
 import TechnologyList from "./TechnologyList"
 
 export default function CandidateFullCv() {
   return (
     <div>
       <Grid>
-        <Grid.Column width="4"></Grid.Column>
+        <Grid.Column width="4"> <ContactDetails/> </Grid.Column>
         <Grid.Column width="12">
           <Grid.Row>
             <Grid.Column width="12">
