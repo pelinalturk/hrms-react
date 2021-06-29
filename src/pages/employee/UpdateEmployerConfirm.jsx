@@ -1,23 +1,38 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card, Image, Grid, Table } from "semantic-ui-react";
 import { EmployerService } from "../../services/employerService";
+import { EmployeeService } from "../../services/employee/employeeService";
 
 export default function UpdateEmployerConfirm() {
+  //önce güncelleme isteği atan employerları sırala detaya tıklayınca bu sayfaya gelsin
   //eski bilgiler yanında da yeni bilgiler görünsün
-  //id 41
+  //id 40
   const [employer, setEmployer] = useState({});
   const [updateEmployer, setUpdateEmployer] = useState({});
+  const [confirm, setConfirm] = useState({})
+
   let employerService = new EmployerService();
 
   useEffect(() => {
-    employerService.getById(41).then((result) => setEmployer(result.data));
+    employerService.getById(40).then((result) => setEmployer(result.data));
   }, []);
 
   useEffect(() => {
     employerService
-      .getUpdateData(41)
+      .getUpdateData(40)
       .then((result) => setUpdateEmployer(result.data));
   }, []);
+ let employeeService = new EmployeeService()
+
+ let postConfirmed = { 
+  employeeId: "39", 
+  employerId:"40"
+}; 
+
+  const updateEmployerConfirm = ()=> {
+    employeeService.confirmUpdate(39,40).then((result) => console.log(result.data.data)); 
+    console.log(postConfirmed)
+  }
 
   return (
     <div>
@@ -72,8 +87,7 @@ export default function UpdateEmployerConfirm() {
                 </Table.Row>
               </Table.Body>
             </Table>
-            <Button color="green">Onayla</Button>
-              <Button color="red">Reddet</Button>
+            <Button color="green" onClick = {() => updateEmployerConfirm()}>Onayla</Button>
           </Grid.Column>
         </Grid.Row>
       </Grid>

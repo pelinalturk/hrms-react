@@ -11,8 +11,7 @@ function App() {
      <div className="App">
        <Navi/>
       {/*  <Dashboard/> */}
-       <UpdateCompany/> 
-    {/*   <UpdateEmployerConfirm/> */}
+       <UpdateEmployerConfirm/> 
     </div>   
   );
 }
