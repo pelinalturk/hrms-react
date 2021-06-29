@@ -20,7 +20,6 @@ export default function ActiveAndApproveJobs() {
     //pageSize = 10 pageNo=paginationdan tıklanana göre değişmeli
     //İlanlar listelendiğinde default onarlı sayfalama olmalıdır. Kullanıcılar sayfa adedini
     //10-20-50-100 şeklinde değiştirebilmelidir. SAYFA ADEDİ ???????
-    //pageSize kısmı heralde combobax içine 10-20-50-100 koy
   }, []); */
    useEffect(() => {
     jobAdvertisementService

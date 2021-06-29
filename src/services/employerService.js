@@ -7,4 +7,10 @@ export class EmployerService{
     getById(id){
         return axios.get("http://localhost:8080/api/employers/getById?id="+id)
     }
+    updateEmployer(employerId,values){//http://localhost:8080/api/employers/update?employerId=41
+        return axios.post("http://localhost:8080/api/employers/update?employerId=40",employerId,values)
+    }
+    getUpdateData(id){
+        return axios.get("http://localhost:8080/api/EmployerUpdateController/getByEmployerId?employerId="+id)
+    }
 }
