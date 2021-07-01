@@ -15,7 +15,7 @@ import {
   CardButton,
   CardButtonBlue,
 } from "./styles";
-import { JobTitleService } from "../../services/jobTitleService";
+import { JobTitleService } from "../../services/jobAdvertisement/jobTitleService";
 import { Link } from "react-router-dom";
 
 export default function JobTitle() {

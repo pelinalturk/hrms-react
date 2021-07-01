@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Card } from "semantic-ui-react";
 import { Header, Image, Table, Grid } from "semantic-ui-react";
 import SideBar from "../../layouts/SideBar";
-import { EmployerService } from "../../services/employerService";
+import { EmployerService } from "../../services/employer/employerService";
 import UpdateModal from "./employerModals/UpdateModal";
 import { Link } from 'react-router-dom'
 

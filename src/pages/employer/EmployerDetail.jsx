@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import { Grid } from "semantic-ui-react";
 import SideBar from "../../layouts/SideBar";
 import { Table, Button } from "semantic-ui-react";
-import { EmployerService } from "../../services/employerService";
+import { EmployerService } from "../../services/employer/employerService";
 import { JobAdvertisementService } from "../../services/jobAdvertisement/jobAdvertisementService";
 
 export default function EmployerDetail() {
@@ -41,7 +41,6 @@ export default function EmployerDetail() {
                   <Table.HeaderCell>Email</Table.HeaderCell>
                   <Table.HeaderCell>Telefon Numarası</Table.HeaderCell>
                   <Table.HeaderCell>Web Adresi</Table.HeaderCell>
-                  <Table.HeaderCell></Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
               <Table.Body>
@@ -50,8 +49,6 @@ export default function EmployerDetail() {
                   <Table.Cell>{employers.email}</Table.Cell>
                   <Table.Cell>{employers.phoneNumber}</Table.Cell>
                   <Table.Cell>{employers.webAddress}</Table.Cell>
-                  <Table.Cell> 
-                  </Table.Cell>
                 </Table.Row>
                 <Grid.Column></Grid.Column>
               </Table.Body>

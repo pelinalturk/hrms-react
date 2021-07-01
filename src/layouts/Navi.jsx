@@ -4,6 +4,8 @@ import SignedIn from "./SignedIn";
 import SignedOut from "./SignedOut";
 import { useHistory } from "react-router";
 import {useSelector} from "react-redux"
+import { Link } from "react-router-dom";
+
 import FavoriteJobAdvertisement from "./FavoriteJobAdvertisement";
 
 export default function Navi() {
@@ -23,8 +25,7 @@ export default function Navi() {
   return (
     <div>
       <Menu inverted color={"violet"}>
-        <Menu.Item name="home" />
-        <Menu.Item name="messages" />
+       <Link to ="/"> <Menu.Item name="home" /></Link> 
         <Menu.Menu position="right">
         <FavoriteJobAdvertisement/>
         {isAuthenticated?<SignedIn signOut={handleSignOut}/>:<SignedOut signIn={handleSignIn}/>}

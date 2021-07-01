@@ -3,7 +3,7 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { Button } from "semantic-ui-react";
 import HRMSTextInput from "../../utilities/customFormControls/HRMSTextInput";
-import { EmployerService } from "../../services/employerService";
+import { EmployerService } from "../../services/employer/employerService";
 export default function UpdateCompanyModal() {
 
   const initialValues = { companyName: "", email: "", webbAddress: "" };

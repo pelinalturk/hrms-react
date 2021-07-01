@@ -34,11 +34,6 @@ export default function CandidateCvList() {
     </Card>
     ))}
     </Card.Group>
-       
-     
-    
-           
-          
     </div>
     
   );

@@ -5,13 +5,15 @@ import Dashboard from "./layouts/Dashboard.jsx"
 import FormDeneme from './pages/FormDeneme';
 import UpdateCompany from './pages/employer/UpdateCompany';
 import UpdateEmployerConfirm from './pages/employee/UpdateEmployerConfirm';
+import CandidateCvList from './pages/candidate/list/CandidateCvList';
 
 function App() {
   return (
      <div className="App">
        <Navi/>
-      {/*  <Dashboard/> */}
-       <UpdateEmployerConfirm/> 
+        <Dashboard/> 
+      
+     
     </div>   
   );
 }

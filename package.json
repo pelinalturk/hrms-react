@@ -9,6 +9,7 @@
     "axios": "^0.21.1",
     "formik": "^2.2.9",
     "framer-motion": "^4.1.17",
+    "match-sorter": "^6.3.0",
     "moment": "^2.29.1",
     "pure-react-carousel": "^1.27.6",
     "react": "^17.0.2",

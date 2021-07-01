@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { CityService } from "../../services/candidate/cityService";
 import { WorkingHourService } from "../../services/jobAdvertisement/workingHourService";
 import { MannerOfWorkService } from "../../services/jobAdvertisement/mannerOfWorkService";
-import { JobTitleService } from "../../services/jobTitleService";
+import { JobTitleService } from "../../services/jobAdvertisement/jobTitleService";
 import { PositionLevelService } from "../../services/jobAdvertisement/jobPositionLevelService";
 import { JobAdvertisementService } from "../../services/jobAdvertisement/jobAdvertisementService";
 

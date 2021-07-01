@@ -13,6 +13,7 @@ import ConfirmJobAdvertisementList from "../pages/jobAdvertisement/ConfirmJobAdv
 import ActiveAndApproveJobsDetail from "../pages/jobAdvertisement/ActiveAndApproveJobsDetail";
 import FavoriteJobDetail from "../pages/candidate/FavoriteJobDetail";
 import UpdateCompany from "../pages/employer/UpdateCompany";
+import PositionLevelDetail from "../pages/PositionLevelDetail";
 
 export default function Dashboard() {
   return (
@@ -30,6 +31,7 @@ export default function Dashboard() {
             <Route exact path="/active/:id" component={ActiveAndApproveJobsDetail} />
             <Route exact path="/confirmJob" component={ConfirmJobAdvertisementList} />
             <Route path="/favorite" component={FavoriteJobDetail} />  
+            <Route path="/positionDetail/:id" component={PositionLevelDetail} /> 
        </Switch>   </Grid.Column>
         </Grid.Row>
         <Grid>

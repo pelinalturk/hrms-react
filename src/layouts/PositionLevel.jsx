@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Popup, Card, Image} from "semantic-ui-react";
 import { Grid } from "semantic-ui-react";
-import { PositionLevelService } from "../services/jobPositionLevelService";
+import { PositionLevelService } from "../services/jobAdvertisement/jobPositionLevelService";
+import { Link } from "react-router-dom";
+
 export default function PositionLevel() {
 
   const [positionLevels, setPositionLevels] = useState([])
@@ -18,8 +20,8 @@ export default function PositionLevel() {
           {positionLevels.map((positionLevel) =>(
           <Grid.Column width="5" key={positionLevel.id}>
               <Popup trigger={
-                <Card>
-                  <Image src={positionLevel.photo} />
+                <Card> <Link to = {`/positionDetail/${positionLevel.id}`}>
+                  <Image src={positionLevel.photo} /></Link>
                   <Card.Content>
                     <Card.Header>{positionLevel.positionLevel}</Card.Header>
                     <Card.Description></Card.Description>

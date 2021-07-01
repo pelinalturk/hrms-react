@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card, Image } from "semantic-ui-react";
 import { Grid } from "semantic-ui-react";
-import { EmployerService } from "../../services/employerService";
+import { EmployerService } from "../../services/employer/employerService";
 import { Link } from 'react-router-dom'
 import SideBar from '../../layouts/SideBar'
 export default function Employers() {

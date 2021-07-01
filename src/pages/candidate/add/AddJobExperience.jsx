@@ -1,7 +1,7 @@
 import { Formik } from "formik";
 import * as Yup from "yup";
 import React, { useEffect, useState } from "react";
-import { JobTitleService } from "../../../services/jobTitleService";
+import { JobTitleService } from "../../../services/jobAdvertisement/jobTitleService";
 import { CandidateJobExpService } from "../../../services/candidate/candidateJobExpService";
 
 export default function AddJobExperience() {
