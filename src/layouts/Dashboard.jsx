@@ -14,6 +14,7 @@ import ActiveAndApproveJobsDetail from "../pages/jobAdvertisement/ActiveAndAppro
 import FavoriteJobDetail from "../pages/candidate/FavoriteJobDetail";
 import UpdateCompany from "../pages/employer/UpdateCompany";
 import PositionLevelDetail from "../pages/PositionLevelDetail";
+import JobTitleDetail from "../pages/jobTitle/JobTitleDetail";
 
 export default function Dashboard() {
   return (
@@ -23,6 +24,7 @@ export default function Dashboard() {
           <Grid.Column width="14">
             <Switch>
             <Route exact path="/" component={HomePage} />
+            <Route exact path="/jobTitle/:id" component={JobTitleDetail} />
             <Route exact path="/employers" component={Employers} />
             <Route exact path="/employers/:id" component={EmployerDetail} />
             <Route exact path="/login" component={LogIn} />

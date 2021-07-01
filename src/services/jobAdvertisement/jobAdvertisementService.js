@@ -34,4 +34,7 @@ export class JobAdvertisementService{
     getByActiveAndApproved(pageNo){//http://localhost:8080/api/JobAdvertisement/getByPage?pageNo=1&pageSize=5
         return axios.get(`http://localhost:8080/api/JobAdvertisement/getByPage?pageNo=${pageNo}&pageSize=10`)
     }
+    getByJobTitle(id){
+        return axios.get("http://localhost:8080/api/JobAdvertisement/getByJobPosition?id="+id)
+    }
 }

@@ -12,8 +12,6 @@ import {
   BackButton,
   NextButton,
   CardText,
-  CardButton,
-  CardButtonBlue,
 } from "./styles";
 import { JobTitleService } from "../../services/jobAdvertisement/jobTitleService";
 import { Link } from "react-router-dom";
@@ -55,7 +53,7 @@ export default function JobTitle() {
                 <Card>
                   <div>
                     <CardText>
-                      <Link>
+                      <Link to = {`/jobTitle/${jobTitle.id}`}>
                         <h2>{jobTitle.title}</h2>
                       </Link>
                     </CardText>
