@@ -10,7 +10,7 @@ export default function CandidateJobExpList() {
     candidateJobExpService
       .getCandidateJobExpService()
       .then((result) => setcandidateJobExps(result.data.data));
-  }, []);
+  }, [candidateJobExps]);
 
   const deleteJobExperience = (id) => {
     candidateJobExpService.deleteJobExperience(id).then((result) => console.log(result.data));

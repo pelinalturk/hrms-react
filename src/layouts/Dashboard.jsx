@@ -32,9 +32,11 @@ export default function Dashboard() {
             <Route exact path="/active" component={ActiveAndApproveJobs} />
             <Route exact path="/active/:id" component={ActiveAndApproveJobsDetail} />
             <Route exact path="/confirmJob" component={ConfirmJobAdvertisementList} />
-            <Route path="/favorite" component={FavoriteJobDetail} />  
-            <Route path="/positionDetail/:id" component={PositionLevelDetail} /> 
-       </Switch>   </Grid.Column>
+            <Route exact path="/favorite" component={FavoriteJobDetail} />  
+            <Route exact path="/positionDetail/:id" component={PositionLevelDetail} />
+            <Route exact path="/favoritiesDetail/:id" component={FavoriteJobDetail} />  
+       </Switch>   
+       </Grid.Column>
         </Grid.Row>
         <Grid>
           <Grid.Row>

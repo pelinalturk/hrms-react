@@ -8,7 +8,7 @@ export default function CandidateSchoolList() {
   
   useEffect(() => {
     candidateSchoolService.getCandidateSchoolService().then(result => setcandidateSchools(result.data.data))
-  }, []);
+  }, [candidateSchools]);
 
   const deleteSchool = (id) => {
     candidateSchoolService.deleteSchool(id).then((result) => console.log(result.data));

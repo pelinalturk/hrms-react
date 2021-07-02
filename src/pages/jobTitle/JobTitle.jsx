@@ -50,15 +50,16 @@ export default function JobTitle() {
                 classNameHidden="hidden"
                 classNameVisible="visible"
               >
-                <Card>
-                  <div>
-                    <CardText>
-                      <Link to = {`/jobTitle/${jobTitle.id}`}>
+                <Link to={`/jobTitle/${jobTitle.id}`}>
+                  {" "}
+                  <Card>
+                    <div>
+                      <CardText>
                         <h2>{jobTitle.title}</h2>
-                      </Link>
-                    </CardText>
-                  </div>
-                </Card>
+                      </CardText>
+                    </div>
+                  </Card>
+                </Link>
               </StyledSlide>
             ))}
           </StyledSlider>

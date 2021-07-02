@@ -12,7 +12,7 @@ export default function CandidateLanguageList() {
     candidateLanguageService
       .getCandidateLanguageService()
       .then((result) => setcandidateLanguages(result.data.data));
-  }, []);
+  }, [candidateLanguages]);
 
   const deleteLanguage = (id) => {
     candidateLanguageService.deleteLanguage(id).then((result) => console.log(result.data));

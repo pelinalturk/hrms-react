@@ -9,7 +9,7 @@ export default function TechnologyList() {
     useEffect(() => {
       
       candidateTechsService.getTechs().then((result) => setTechs(result.data.data))
-    }, [])
+    }, [techs])
 
     const deleteTech = (id) => {
         candidateTechsService.deleteTechs(id).then((result) => console.log(result.data))

@@ -26,8 +26,8 @@ export default function Navi() {
     <div>
       <Menu inverted color={"violet"}>
        <Link to ="/"> <Menu.Item name="home" /></Link> 
-        <Menu.Menu position="right">
-        <FavoriteJobAdvertisement/>
+        <Menu.Menu position="right">  <FavoriteJobAdvertisement/>
+       
         {isAuthenticated?<SignedIn signOut={handleSignOut}/>:<SignedOut signIn={handleSignIn}/>}
           <Menu.Item>
           </Menu.Item>

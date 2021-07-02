@@ -5,17 +5,33 @@ import { PositionLevelService } from "../services/jobAdvertisement/jobPositionLe
 import SideBar from "../layouts/SideBar"
 import { Link } from 'react-router-dom'
 import PositionLevelModal from "./PositionLevelModal";
+import { FavoritiesService } from "../services/candidate/candidateFavoritiesService";
 
 export default function PositionLevelDetail() {
   let { id } = useParams();
   const [positionLevels, setPositionLevels] = useState([]);
+let jobPositionLevelService = new PositionLevelService();
 
   useEffect(() => {
-    let jobPositionLevelService = new PositionLevelService();
     jobPositionLevelService
       .getByPosition(id)
       .then((result) => setPositionLevels(result.data.data));
-  }, []);
+  }, [positionLevels]);
+
+  let favoriteJob = {
+    candidate: {
+      id:""
+    },
+    jobAdvertisement: {
+      id
+    }
+  }
+  const addFavoriteJob = (id) =>{
+    favoriteJob.candidate.id=5
+    favoriteJob.jobAdvertisement.id=id
+  let candidateFavoritiesService= new  FavoritiesService()
+  candidateFavoritiesService.addFavoriteJob(favoriteJob).then((result) => console.log(result.data)); 
+  }
   return (
     <div>
       <Grid>
@@ -48,7 +64,7 @@ export default function PositionLevelDetail() {
                   <Card.Content extra>
                     <div className="ui two buttons">
                     <Link to ={`/positionDetail/${positionLevel.id}`}><PositionLevelModal/></Link>  
-                      <Button basic color="red">
+                      <Button basic color="red" onClick={() => addFavoriteJob(positionLevel.id)}>
                         Favorilere Ekle
                       </Button>
                     </div>
