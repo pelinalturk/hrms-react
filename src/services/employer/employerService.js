@@ -13,4 +13,7 @@ export class EmployerService{
     getUpdateData(id){
         return axios.get("http://localhost:8080/api/EmployerUpdateController/getByEmployerId?employerId="+id)
     }
+    getByIsActiveTrueIsConfirmFalse(){
+        return axios.get("http://localhost:8080/api/employers/IsActiveTrueIsConfirmFalse")
+    }
 }

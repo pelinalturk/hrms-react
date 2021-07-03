@@ -12,7 +12,7 @@ export default function JobTitleModalDetail() {
     jobAdvertisementService
       .getById(id)
       .then((res) => setjobAdvertisement(res.data));
-  }, []);
+  }, [id]);
   return (
     <Grid>
       <Grid.Row>

@@ -12,10 +12,8 @@ import ActiveAndApproveJobs from "../pages/jobAdvertisement/ActiveAndApproveJobs
 import ConfirmJobAdvertisementList from "../pages/jobAdvertisement/ConfirmJobAdvertisementList";
 import ActiveAndApproveJobsDetail from "../pages/jobAdvertisement/ActiveAndApproveJobsDetail";
 import FavoriteJobDetail from "../pages/candidate/FavoriteJobDetail";
-import UpdateCompany from "../pages/employer/UpdateCompany";
 import PositionLevelDetail from "../pages/PositionLevelDetail";
 import JobTitleDetail from "../pages/jobTitle/JobTitleDetail";
-import ConfirmEmployer from "../pages/employer/ConfirmEmployer";
 import EmployeeProfile from "../pages/employee/EmployeeProfile"
 import UpdateRequest from "../pages/employee/UpdateRequest";
 
@@ -29,7 +27,7 @@ export default function Dashboard() {
             <Route exact path="/" component={HomePage} />
             <Route exact path="/jobTitle/:id" component={JobTitleDetail} />
             <Route exact path="/employers" component={Employers} />
-            <Route exact path="/employers/confirm" component={ConfirmEmployer} />
+           
             <Route exact path="/employers/:id" component={EmployerDetail} />
             <Route exact path="/login" component={LogIn} />
             <Route exact path="/cv" component={CandidateFullCv} />

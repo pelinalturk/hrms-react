@@ -4,7 +4,7 @@ import { Header, Image, Table, Grid } from "semantic-ui-react";
 import SideBar from "../../layouts/SideBar";
 import { EmployerService } from "../../services/employer/employerService";
 import UpdateModal from "./employerModals/UpdateModal";
-export default function UpdateCompany() {//burası da tamam
+export default function UpdateCompany() {//burası da tamam id niye elle verilmiş bi bak
     const [employer, setEmployer] = useState({})
 
     useEffect(() => {
