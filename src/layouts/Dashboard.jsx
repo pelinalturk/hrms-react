@@ -15,6 +15,8 @@ import FavoriteJobDetail from "../pages/candidate/FavoriteJobDetail";
 import UpdateCompany from "../pages/employer/UpdateCompany";
 import PositionLevelDetail from "../pages/PositionLevelDetail";
 import JobTitleDetail from "../pages/jobTitle/JobTitleDetail";
+import ConfirmEmployer from "../pages/employer/ConfirmEmployer";
+import EmployeeProfile from "../pages/employee/EmployeeProfile"
 
 export default function Dashboard() {
   return (
@@ -26,6 +28,7 @@ export default function Dashboard() {
             <Route exact path="/" component={HomePage} />
             <Route exact path="/jobTitle/:id" component={JobTitleDetail} />
             <Route exact path="/employers" component={Employers} />
+            <Route exact path="/employers/confirm" component={ConfirmEmployer} />
             <Route exact path="/employers/:id" component={EmployerDetail} />
             <Route exact path="/login" component={LogIn} />
             <Route exact path="/cv" component={CandidateFullCv} />
@@ -34,7 +37,8 @@ export default function Dashboard() {
             <Route exact path="/confirmJob" component={ConfirmJobAdvertisementList} />
             <Route exact path="/favorite" component={FavoriteJobDetail} />  
             <Route exact path="/positionDetail/:id" component={PositionLevelDetail} />
-            <Route exact path="/favoritiesDetail/:id" component={FavoriteJobDetail} />  
+            <Route exact path="/favoritiesDetail/:id" component={FavoriteJobDetail} />
+            <Route exact path="/employee" component={EmployeeProfile}/>  
        </Switch>   
        </Grid.Column>
         </Grid.Row>

@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import {EmployerService} from '../../services/employerService' 
 
 export default function ConfirmEmployer() {
-  const [employers, setEmployers] = useState([])
+  /* const [employers, setEmployers] = useState([])
 
   useEffect(() => {
    let employerService = new EmployerService()
     employerService.getEmployers().then(result => setEmployers(result.data.data))
-  }, [])
+  }, []) */
     return (
         <div>
-        <table className="customers">
+        {/* <table className="customers">
           <thead>
             <tr>
               <th>Şirket İsmi</th>
@@ -31,7 +30,7 @@ export default function ConfirmEmployer() {
              </tr>
              ))}
           </tbody>
-        </table>
+        </table> */}
       </div>
     )
 }

@@ -1,32 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { Grid, GridColumn } from "semantic-ui-react";
-import { Table, Button, Pagination, Dropdown } from "semantic-ui-react";
+import { Grid } from "semantic-ui-react";
+import { Table, Button, Pagination, Label } from "semantic-ui-react";
 import { JobAdvertisementService } from "../../services/jobAdvertisement/jobAdvertisementService";
 import { Link } from "react-router-dom";
 import CitiesFilter from "../../layouts/filtered/CitiesFilter";
+import MannerOfWorkFilter from "../../layouts/filtered/MannerOfWorkFilter";
+import WorkingHourFilter from "../../layouts/filtered/WorkingHoursFilter";
+import PositionLevelFilter from "../../layouts/filtered/PositionLevelFilter";
 
 export default function ActiveAndApproveJobs() {
   const [jobAdvertisements, setjobAdvertisements] = useState([]);
   const [filteredJobAdverts, setFilteredJobAdverts] = useState(null);
   const [selectedCity, setSelectedCity] = useState(null);
+  const [selectedPosition, setSelectedPosition] = useState(null);
+  const [selectedWorkingHour, setSelectedWorkingHour] = useState(null);
+  const [selectedMannerOfWork, setSelectedMannerOfWork] = useState(null);
   let jobAdvertisementService = new JobAdvertisementService();
   const [pageNo, setPageNo] = useState(1);
-  const [pageSize, setPageSize] = useState(10);
-  let page=10
- /*  useEffect(() => {
-    jobAdvertisementService
-      .getByActiveAndApproved(1, 10)
-      .then((result) => setjobAdvertisements(result.data.data));
-    //pageSize = 10 pageNo=paginationdan tıklanana göre değişmeli
-    //İlanlar listelendiğinde default onarlı sayfalama olmalıdır. Kullanıcılar sayfa adedini
-    //10-20-50-100 şeklinde değiştirebilmelidir. SAYFA ADEDİ ???????
-  }, []); */
-   useEffect(() => {
+
+  useEffect(() => {
     jobAdvertisementService
       .getByActiveAndApproved(pageNo)
       .then((result) => setjobAdvertisements(result.data.data));
     //pageSize = 10 pageNo=paginationdan tıklanana göre değişmeli
-  }, [pageNo]); 
+  }, [pageNo]);
 
   const handdleChange = (e, page) => {
     setPageNo(page.activePage);
@@ -38,29 +35,276 @@ export default function ActiveAndApproveJobs() {
       filteredJobByJobAdverts = jobAdvertisements.filter(
         (jobAdvert) => jobAdvert.city.id === selectedCity
       );
-    } else {
+       if (selectedMannerOfWork && selectedCity) {
+        filteredJobByJobAdverts = jobAdvertisements.filter(
+          (jobAdvert) =>
+            jobAdvert.mannerOfWork.id === selectedMannerOfWork &&
+            jobAdvert.city.id === selectedCity
+        );
+      }
+      else if (selectedPosition && selectedCity){
+        filteredJobByJobAdverts = jobAdvertisements.filter(
+          (jobAdvert) =>
+            jobAdvert.city.id === selectedCity &&
+            jobAdvert.positionLevel.id === selectedPosition
+        );
+      }
+      else if (selectedWorkingHour && selectedCity){
+        filteredJobByJobAdverts = jobAdvertisements.filter(
+          (jobAdvert) =>
+            jobAdvert.city.id === selectedCity &&
+            jobAdvert.workingHour.id === selectedWorkingHour
+        );
+      }
+      else if (selectedWorkingHour && selectedMannerOfWork && selectedCity){
+        filteredJobByJobAdverts = jobAdvertisements.filter(
+          (jobAdvert) =>
+            jobAdvert.mannerOfWork.id === selectedMannerOfWork &&
+            jobAdvert.city.id === selectedCity &&
+            jobAdvert.workingHour.id === selectedWorkingHour
+        );
+      }
+      else if (selectedPosition && selectedMannerOfWork && selectedCity){
+        filteredJobByJobAdverts = jobAdvertisements.filter(
+          (jobAdvert) =>
+            jobAdvert.mannerOfWork.id === selectedMannerOfWork &&
+            jobAdvert.city.id === selectedCity &&
+            jobAdvert.positionLevel.id === selectedPosition
+        );
+      }
+      else if (selectedPosition && selectedWorkingHour && selectedCity){
+        filteredJobByJobAdverts = jobAdvertisements.filter(
+          (jobAdvert) =>
+          jobAdvert.workingHour.id === selectedWorkingHour &&
+            jobAdvert.city.id === selectedCity &&
+            jobAdvert.positionLevel.id === selectedPosition
+        );
+      }
+      else if (selectedWorkingHour && selectedMannerOfWork && selectedCity && selectedPosition){
+        filteredJobByJobAdverts = jobAdvertisements.filter(
+          (jobAdvert) =>
+            jobAdvert.mannerOfWork.id === selectedMannerOfWork &&
+            jobAdvert.city.id === selectedCity &&
+            jobAdvert.workingHour.id === selectedWorkingHour &&
+            jobAdvert.positionLevel.id === selectedPosition
+        );
+      }  
+
+    } 
+    else if (selectedMannerOfWork) {
+      filteredJobByJobAdverts = jobAdvertisements.filter(
+        (jobAdvert) => jobAdvert.mannerOfWork.id === selectedMannerOfWork
+      );
+
+
+      if (selectedMannerOfWork && selectedCity) {
+        filteredJobByJobAdverts = jobAdvertisements.filter(
+          (jobAdvert) =>
+            jobAdvert.mannerOfWork.id === selectedMannerOfWork &&
+            jobAdvert.city.id === selectedCity
+        );
+      }
+      else if (selectedMannerOfWork && selectedPosition){
+        filteredJobByJobAdverts = jobAdvertisements.filter(
+          (jobAdvert) =>
+            jobAdvert.positionLevel.id === selectedPosition &&
+            jobAdvert.mannerOfWork.id === selectedMannerOfWork
+        );
+      }
+      else if (selectedWorkingHour && selectedMannerOfWork){
+        filteredJobByJobAdverts = jobAdvertisements.filter(
+          (jobAdvert) =>
+            jobAdvert.mannerOfWork.id === selectedMannerOfWork &&
+            jobAdvert.workingHour.id === selectedWorkingHour
+        );
+      }
+      else if (selectedWorkingHour && selectedMannerOfWork && selectedCity){
+        filteredJobByJobAdverts = jobAdvertisements.filter(
+          (jobAdvert) =>
+            jobAdvert.mannerOfWork.id === selectedMannerOfWork &&
+            jobAdvert.city.id === selectedCity &&
+            jobAdvert.workingHour.id === selectedWorkingHour
+        );
+      }
+      else if (selectedPosition && selectedMannerOfWork && selectedCity){
+        filteredJobByJobAdverts = jobAdvertisements.filter(
+          (jobAdvert) =>
+            jobAdvert.mannerOfWork.id === selectedMannerOfWork &&
+            jobAdvert.city.id === selectedCity &&
+            jobAdvert.positionLevel.id === selectedPosition
+        );
+      }
+      else if (selectedPosition && selectedWorkingHour && selectedMannerOfWork){
+        filteredJobByJobAdverts = jobAdvertisements.filter(
+          (jobAdvert) =>
+          jobAdvert.workingHour.id === selectedWorkingHour &&
+            jobAdvert.mannerOfWork.id === selectedMannerOfWork &&
+            jobAdvert.positionLevel.id === selectedPosition
+        );
+      }
+      else if (selectedWorkingHour && selectedMannerOfWork && selectedCity && selectedPosition){
+        filteredJobByJobAdverts = jobAdvertisements.filter(
+          (jobAdvert) =>
+            jobAdvert.mannerOfWork.id === selectedMannerOfWork &&
+            jobAdvert.city.id === selectedCity &&
+            jobAdvert.workingHour.id === selectedWorkingHour &&
+            jobAdvert.positionLevel.id === selectedPosition
+        );
+      }  
+
+    } else if (selectedWorkingHour) {
+      filteredJobByJobAdverts = jobAdvertisements.filter(
+        (jobAdvert) => jobAdvert.workingHour.id === selectedWorkingHour
+      );
+
+      if (selectedMannerOfWork && selectedWorkingHour) {
+        filteredJobByJobAdverts = jobAdvertisements.filter(
+          (jobAdvert) =>
+            jobAdvert.mannerOfWork.id === selectedMannerOfWork &&
+            jobAdvert.workingHour.id === selectedWorkingHour
+        );
+      }
+      else if (selectedWorkingHour && selectedPosition){
+        filteredJobByJobAdverts = jobAdvertisements.filter(
+          (jobAdvert) =>
+            jobAdvert.positionLevel.id === selectedPosition &&
+            jobAdvert.workingHour.id === selectedWorkingHour
+        );
+      }
+      else if (selectedWorkingHour && selectedCity){
+        filteredJobByJobAdverts = jobAdvertisements.filter(
+          (jobAdvert) =>
+            jobAdvert.city.id === selectedCity &&
+            jobAdvert.workingHour.id === selectedWorkingHour
+        );
+      }
+      else if (selectedWorkingHour && selectedMannerOfWork && selectedCity){
+        filteredJobByJobAdverts = jobAdvertisements.filter(
+          (jobAdvert) =>
+            jobAdvert.mannerOfWork.id === selectedMannerOfWork &&
+            jobAdvert.city.id === selectedCity &&
+            jobAdvert.workingHour.id === selectedWorkingHour
+        );
+      }
+      else if (selectedPosition && selectedWorkingHour && selectedCity){
+        filteredJobByJobAdverts = jobAdvertisements.filter(
+          (jobAdvert) =>
+            jobAdvert.workingHour.id === selectedWorkingHour &&
+            jobAdvert.city.id === selectedCity &&
+            jobAdvert.positionLevel.id === selectedPosition
+        );
+      }
+      else if (selectedPosition && selectedWorkingHour && selectedMannerOfWork){
+        filteredJobByJobAdverts = jobAdvertisements.filter(
+          (jobAdvert) =>
+          jobAdvert.workingHour.id === selectedWorkingHour &&
+            jobAdvert.mannerOfWork.id === selectedMannerOfWork &&
+            jobAdvert.positionLevel.id === selectedPosition
+        );
+      }
+      else if (selectedWorkingHour && selectedMannerOfWork && selectedCity && selectedPosition){
+        filteredJobByJobAdverts = jobAdvertisements.filter(
+          (jobAdvert) =>
+            jobAdvert.mannerOfWork.id === selectedMannerOfWork &&
+            jobAdvert.city.id === selectedCity &&
+            jobAdvert.workingHour.id === selectedWorkingHour &&
+            jobAdvert.positionLevel.id === selectedPosition
+        );
+      }  
+
+    } else if (selectedPosition) {
+      filteredJobByJobAdverts = jobAdvertisements.filter(
+        (jobAdvert) => jobAdvert.positionLevel.id === selectedPosition
+      );
+
+
+      if (selectedMannerOfWork && selectedPosition) {
+        filteredJobByJobAdverts = jobAdvertisements.filter(
+          (jobAdvert) =>
+            jobAdvert.mannerOfWork.id === selectedMannerOfWork &&
+            jobAdvert.selectedPosition.id === selectedPosition
+        );
+      }
+      else if (selectedWorkingHour && selectedPosition){
+        filteredJobByJobAdverts = jobAdvertisements.filter(
+          (jobAdvert) =>
+            jobAdvert.positionLevel.id === selectedPosition &&
+            jobAdvert.workingHour.id === selectedWorkingHour
+        );
+      }
+      else if (selectedPosition && selectedCity){
+        filteredJobByJobAdverts = jobAdvertisements.filter(
+          (jobAdvert) =>
+            jobAdvert.city.id === selectedCity &&
+            jobAdvert.positionLevel.id === selectedPosition
+        );
+      }
+      else if (selectedPosition && selectedMannerOfWork && selectedCity){
+        filteredJobByJobAdverts = jobAdvertisements.filter(
+          (jobAdvert) =>
+            jobAdvert.mannerOfWork.id === selectedMannerOfWork &&
+            jobAdvert.city.id === selectedCity &&
+            jobAdvert.positionLevel.id === selectedPosition
+        );
+      }
+      else if (selectedPosition && selectedWorkingHour && selectedCity){
+        filteredJobByJobAdverts = jobAdvertisements.filter(
+          (jobAdvert) =>
+            jobAdvert.workingHour.id === selectedWorkingHour &&
+            jobAdvert.city.id === selectedCity &&
+            jobAdvert.positionLevel.id === selectedPosition
+        );
+      }
+      else if (selectedPosition && selectedWorkingHour && selectedMannerOfWork){
+        filteredJobByJobAdverts = jobAdvertisements.filter(
+          (jobAdvert) =>
+          jobAdvert.workingHour.id === selectedWorkingHour &&
+            jobAdvert.mannerOfWork.id === selectedMannerOfWork &&
+            jobAdvert.positionLevel.id === selectedPosition
+        );
+      }
+      else if (selectedWorkingHour && selectedMannerOfWork && selectedCity && selectedPosition){
+        filteredJobByJobAdverts = jobAdvertisements.filter(
+          (jobAdvert) =>
+            jobAdvert.mannerOfWork.id === selectedMannerOfWork &&
+            jobAdvert.city.id === selectedCity &&
+            jobAdvert.workingHour.id === selectedWorkingHour &&
+            jobAdvert.positionLevel.id === selectedPosition
+        );
+      }  
+    }
+    else {
       filteredJobByJobAdverts = null;
     }
     setFilteredJobAdverts(filteredJobByJobAdverts);
-  }, [selectedCity]);
+  }, [
+    selectedCity,
+    selectedMannerOfWork,
+    selectedWorkingHour,
+    selectedPosition,
+  ]);
 
-  const options = [
-    { key: 10, text: 10, value: 10 },
-    { key: 20, text: 20, value: 20 },
-    { key: 50, text: 50, value: 50 },
-    { key: 100, text: 100, value: 100 },
-  ];
   return (
     <div>
       <Grid>
         <Grid.Row>
-          <Grid.Column width="3">
+          <Grid.Column width="4">
             <h3>
               <strong>Filtrele</strong>
             </h3>
+            <Label color="pink">Şehir Seçiniz</Label>
             <CitiesFilter onSelect={handleSelectCity} />
+            <br />
+            <Label color="pink">Çalışma Şekli Seçiniz</Label>
+            <MannerOfWorkFilter onSelect={handleSelectMannerOfWork} />
+            <br />
+            <Label color="pink">Çalışma Zamanı Seçiniz</Label>
+            <WorkingHourFilter onSelect={handleSelectWorkingHour} />
+            <br />
+            <Label color="pink">Pozisyon Seviyesi Seçiniz</Label>
+            <PositionLevelFilter onSelect={handleSelectedPositionLevel} />
           </Grid.Column>
-          <Grid.Column width="13">
+          <Grid.Column width="12">
             <Table celled fixed>
               <Table.Header>
                 <Table.Row>
@@ -130,18 +374,11 @@ export default function ActiveAndApproveJobs() {
                       </Table.Row>
                     ))}
               </Table.Body>
-              <Grid.Row>
-                <GridColumn width="10">
-                  <Pagination
-                    activePage={pageNo}
-                    onPageChange={handdleChange}
-                    totalPages={10}
-                  />
-                </GridColumn>
-                <GridColumn width="3">
-                  <Dropdown selection options={options}></Dropdown>
-                </GridColumn>
-              </Grid.Row>
+              <Pagination
+                activePage={pageNo}
+                onPageChange={handdleChange}
+                totalPages={10}
+              />
             </Table>
           </Grid.Column>
         </Grid.Row>
@@ -150,5 +387,14 @@ export default function ActiveAndApproveJobs() {
   );
   function handleSelectCity(cityId) {
     setSelectedCity(cityId);
+  }
+  function handleSelectMannerOfWork(mannerOfWorkId) {
+    setSelectedMannerOfWork(mannerOfWorkId);
+  }
+  function handleSelectWorkingHour(workingHourId) {
+    setSelectedWorkingHour(workingHourId);
+  }
+  function handleSelectedPositionLevel(positionLevelId) {
+    setSelectedPosition(positionLevelId);
   }
 }
