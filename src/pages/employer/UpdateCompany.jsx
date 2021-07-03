@@ -4,21 +4,14 @@ import { Header, Image, Table, Grid } from "semantic-ui-react";
 import SideBar from "../../layouts/SideBar";
 import { EmployerService } from "../../services/employer/employerService";
 import UpdateModal from "./employerModals/UpdateModal";
-import { Link } from 'react-router-dom'
-
-export default function UpdateCompany() {
+export default function UpdateCompany() {//burası da tamam
     const [employer, setEmployer] = useState({})
 
     useEffect(() => {
            let employerService = new EmployerService()
-           employerService.getById(40).then((result) => setEmployer(result.data))
+           employerService.getById(51).then((result) => setEmployer(result.data))
     }, [])
   return (
-    //solda sidebar ortada card sağda table
-    //rastgele bir employer koy giriş yapmış gibi
-    //id 41 
-    //bir tane employer gelecek map yapma
-   
     <div>
       <Grid>
         <Grid.Row>

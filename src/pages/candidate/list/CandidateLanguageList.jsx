@@ -3,6 +3,7 @@ import {CandidateLanguageService} from "../../../services/candidate/candidateLan
 import { Table, Rating,Button } from "semantic-ui-react";
 import LanguageModal from "../../candidateModals/LanguageModal";
 import LanguageUpdateModal from "../../candidateModals/LanguageUpdateModal";
+import {Link} from "react-router-dom"
 
 export default function CandidateLanguageList() {
   const [candidateLanguages, setcandidateLanguages] = useState([]);
@@ -39,7 +40,7 @@ export default function CandidateLanguageList() {
                 <Rating icon="star" defaultRating={candidateLanguage.languageLevel} maxRating={5} disabled />
               </Table.Cell>
               <Table.Cell><Button onClick={() =>deleteLanguage(candidateLanguage.id)}>Sil</Button></Table.Cell>
-              <Table.Cell><LanguageUpdateModal/></Table.Cell>
+              <Table.Cell><Link to= {`/cv/${candidateLanguage.id}`}><LanguageUpdateModal/></Link></Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>

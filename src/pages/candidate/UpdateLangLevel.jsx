@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { CandidateLanguageService } from "../../services/candidate/candidateLanguageService";
+import { useParams } from "react-router-dom";
 
-export default function UpdateLangLevel() {
+export default function UpdateLangLevel() {//id getir
+  let {id} = useParams();
   let candidateLanguageService= new CandidateLanguageService();
-  const [languages, setlanguages] = useState([]);
-  const updateLanguage = (level) => {
-    candidateLanguageService.updateLanguage(level).then((result) => console.log(result.data))
+
+  const updateLanguage = (value) => {
+    candidateLanguageService.updateLanguage(value).then((result) => console.log(result.data))
   }
   return (
     <div>
@@ -15,7 +17,7 @@ export default function UpdateLangLevel() {
         <Formik
           initialValues={{
             level: "",
-           // id:"5",
+            id:id,
            
           }}
           validationSchema={Yup.object({

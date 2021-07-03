@@ -12,7 +12,7 @@ export default class MenuExampleCompactVertical extends Component {
 
     return (
       <Menu inverted compact icon='labeled' vertical>
-        <Menu.Item as={NavLink} to="/cv"
+        <Menu.Item as={NavLink} to="/employee/updateRequest"
           name='gamepad'
           active={activeItem === 'gamepad'}
           onClick={this.handleItemClick}

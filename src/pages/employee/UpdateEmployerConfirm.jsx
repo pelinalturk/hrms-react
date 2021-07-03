@@ -2,36 +2,27 @@ import React, { useEffect, useState } from "react";
 import { Button, Card, Image, Grid, Table } from "semantic-ui-react";
 import { EmployerService } from "../../services/employer/employerService";
 import { EmployeeService } from "../../services/employee/employeeService";
+import { useParams } from "react-router";
 
-export default function UpdateEmployerConfirm() {
-  //önce güncelleme isteği atan employerları sırala detaya tıklayınca bu sayfaya gelsin
-  //eski bilgiler yanında da yeni bilgiler görünsün
-  //id 40
+export default function UpdateEmployerConfirm() {//burası tamam
+  let { id } = useParams();
   const [employer, setEmployer] = useState({});
   const [updateEmployer, setUpdateEmployer] = useState({});
-  const [confirm, setConfirm] = useState({})
-
   let employerService = new EmployerService();
 
   useEffect(() => {
-    employerService.getById(40).then((result) => setEmployer(result.data));
+    employerService.getById(id).then((result) => setEmployer(result.data));
   }, []);
 
   useEffect(() => {
     employerService
-      .getUpdateData(40)
+      .getUpdateData(id)
       .then((result) => setUpdateEmployer(result.data));
   }, []);
  let employeeService = new EmployeeService()
 
- let postConfirmed = { 
-  employeeId: "39", 
-  employerId:"40"
-}; 
-
   const updateEmployerConfirm = ()=> {
-    employeeService.confirmUpdate(39,40).then((result) => console.log(result.data.data)); 
-    console.log(postConfirmed)
+    employeeService.confirmUpdate(39, id).then((result) => console.log(result.data)); 
   }
 
   return (
