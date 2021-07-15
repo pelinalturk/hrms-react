@@ -13,4 +13,8 @@ export class CandidateSchoolService{
     deleteSchool(id){
         return axios.delete(`http://localhost:8080/api/schoolsController/${id}`)
     }
+    getByCandidateId(id){
+        return axios.get("http://localhost:8080/api/schoolsController/getBySchoolNameOrderByEndingDateDesc?id=" +id)
+    }
+
 }

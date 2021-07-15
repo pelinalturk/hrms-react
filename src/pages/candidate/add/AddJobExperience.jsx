@@ -20,7 +20,7 @@ export default function AddJobExperience() {
         <div>
           <Formik
             initialValues={{
-              curriculumVitaeId:"2",
+              candidateId:"5",
                 companyName: "",
                 jobPositionId: "",
                 startingDate: "",

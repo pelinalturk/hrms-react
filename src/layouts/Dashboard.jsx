@@ -16,6 +16,11 @@ import PositionLevelDetail from "../pages/PositionLevelDetail";
 import JobTitleDetail from "../pages/jobTitle/JobTitleDetail";
 import EmployeeProfile from "../pages/employee/EmployeeProfile"
 import UpdateRequest from "../pages/employee/UpdateRequest";
+import UnapprovedEmployers from "../pages/employer/UnapprovedEmployers" 
+import AddEducation from "../pages/candidate/add/AddEducation";
+import CandidateCvList2 from "../pages/candidate/list/CandidateCVList2";
+import UpdateLangLevel from "../pages/candidate/UpdateLangLevel";
+import Footer from "./footer/Footer";
 
 export default function Dashboard() {
   return (
@@ -27,10 +32,10 @@ export default function Dashboard() {
             <Route exact path="/" component={HomePage} />
             <Route exact path="/jobTitle/:id" component={JobTitleDetail} />
             <Route exact path="/employers" component={Employers} />
-           
+            <Route exact path="/employers/confirm" component={UnapprovedEmployers} />
             <Route exact path="/employers/:id" component={EmployerDetail} />
             <Route exact path="/login" component={LogIn} />
-            <Route exact path="/cv" component={CandidateFullCv} />
+             <Route exact path="/cv" component={CandidateFullCv} />
             <Route path="/cv/:id" component={CandidateFullCv} />
             <Route exact path="/active" component={ActiveAndApproveJobs} />
             <Route exact path="/active/:id" component={ActiveAndApproveJobsDetail} />

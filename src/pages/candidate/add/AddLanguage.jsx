@@ -5,7 +5,7 @@ import {Button } from "semantic-ui-react";
 import HRMSTextInput from '../../../utilities/customFormControls/HRMSTextInput';
 import { CandidateLanguageService } from '../../../services/candidate/candidateLanguageService';
 export default function FormDeneme() {
-    const initialValues = {curriculumVitaeId:"2", language :"", languageLevel:""};
+    const initialValues = {candidateId:"5", language :"", languageLevel:""};
 
     const schema = YUP.object({
         language: YUP.string().required("Dil giriniz"),

@@ -23,9 +23,10 @@ export default function ContactInformation() {
             lastName: Yup.string(),
           })}
           onSubmit={(values, { resetForm, setSubmitting }) => {
-            console.log(values);
+            console.log(values.photo);
            let candidateCvService = new CandidateCvService()
            candidateCvService.updateContactInformation(values).then(result => console.log(result.data))
+           candidateCvService.uploadImage(values.photo,5).then(result => console.log(result.data))
             setTimeout(() => {
               resetForm();
             }, 2000);
@@ -102,7 +103,20 @@ export default function ContactInformation() {
                   }}
                 />
               </label>
-              <button type="submit" /* disabled={!dirty || isSubmitting} */>
+              <label htmlFor="photo">
+                <strong>Fotoğraf</strong>
+                <input
+                id="photo"
+                value={values.photo}
+                onChange={handleChange}
+                  type="file"
+                  className="input"
+                  style={{
+                    width: "100%",
+                  }}
+                />
+              </label>
+              <button type="submit"  disabled={!dirty || isSubmitting} >
                 Güncelle
               </button>
             </form>

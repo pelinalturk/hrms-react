@@ -17,4 +17,7 @@ export class CandidateLanguageService{
         //`http://localhost:8080/api/foreignLanguageController/${level}?${id}`
         return axios.put(`http://localhost:8080/api/foreignLanguageController/${value.level}?id=${value.id}`)
     }
+    getByCandidateId(id){
+        return axios.get("http://localhost:8080/api/foreignLanguageController/getByCandidateId?id=" + id)
+    }
 }

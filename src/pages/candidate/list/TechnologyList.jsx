@@ -8,7 +8,7 @@ export default function TechnologyList() {
     let candidateTechsService = new  CandidateTechsService()
     useEffect(() => {
       
-      candidateTechsService.getTechs().then((result) => setTechs(result.data.data))
+      candidateTechsService.getByCandidateId(5).then((result) => setTechs(result.data))
     }, [techs])
 
     const deleteTech = (id) => {

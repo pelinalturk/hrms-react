@@ -10,4 +10,7 @@ export class CandidateTechsService{
     addTechs(value){
         return axios.post("http://localhost:8080/api/technologiesController/add",value)
     }
+    getByCandidateId(id){
+        return axios.get("http://localhost:8080/api/technologiesController/getByCandidateId?id=" + id)
+    }
 }

@@ -10,4 +10,7 @@ export class CandidateJobExpService{
     addJobExp(value){
         return axios.post("http://localhost:8080/api/jobExperiencesController/add",value)
     }
+    getById(id){
+        return axios.get("http://localhost:8080/api/jobExperiencesController/findAllByCurriculumVitaeIdOrderByEndingDateDesc?id=" +id)
+    }
 }

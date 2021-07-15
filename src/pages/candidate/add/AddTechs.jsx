@@ -9,7 +9,7 @@ export default function AddTechs() {
       <div>
         <Formik
           initialValues={{
-            curriculumVitaeId: "2",
+            candidateId: "5",
             description: "",
           }}
           validationSchema={Yup.object({

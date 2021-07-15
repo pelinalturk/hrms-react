@@ -8,7 +8,7 @@ export default function CandidateJobExpList() {
 
   useEffect(() => {
     candidateJobExpService
-      .getCandidateJobExpService()
+      .getById(5)
       .then((result) => setcandidateJobExps(result.data.data));
   }, [candidateJobExps]);
 
@@ -31,11 +31,11 @@ export default function CandidateJobExpList() {
 
         <Table.Body>
           {candidateJobExps.map((candidateJobExp) => (
-            <Table.Row>
+            <Table.Row key={candidateJobExp.id}>
               <Table.Cell>{candidateJobExp.companyName}</Table.Cell>
               <Table.Cell>{candidateJobExp.jobPosition.title}</Table.Cell>
               <Table.Cell>{candidateJobExp.startingDate}</Table.Cell>
-              <Table.Cell>{candidateJobExp.endingDate}</Table.Cell>
+              <Table.Cell>{candidateJobExp.endingDate === null ? <font color = "purple"> Devam Ediyor </font> : candidateJobExp.endingDate}</Table.Cell>
               <Table.Cell><Button onClick= {() => deleteJobExperience(candidateJobExp.id)}>Sil</Button></Table.Cell>
             </Table.Row>
           ))}

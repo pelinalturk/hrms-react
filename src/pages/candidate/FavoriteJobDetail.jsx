@@ -16,7 +16,7 @@ export default function FavoriteJobDetail() {
     candidateFavoritiesService
       .getById(5)
       .then((res) => setfavorities(res.data.data));
-  }, [favorities]);
+  }, []);
 
   const deleteFavorities = (id) => {
     candidateFavoritiesService.deleteFavority(id).then((result) => console.log(result.data));

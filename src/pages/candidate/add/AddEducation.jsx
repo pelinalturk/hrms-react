@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { CandidateSchoolService } from '../../../services/candidate/candidateSchoolService';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 export default function AddEducation() {
     let candidateSchoolService = new CandidateSchoolService()
@@ -17,7 +18,7 @@ export default function AddEducation() {
         <div>
           <Formik
             initialValues={{
-              curriculumVitaeId:"2",
+              candidateId:"5",
                 degreeId: "",
                 schoolDepartment: "",
                 schoolName:"",

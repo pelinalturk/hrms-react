@@ -11,8 +11,8 @@ export default function CandidateLanguageList() {
   useEffect(() => {
     
     candidateLanguageService
-      .getCandidateLanguageService()
-      .then((result) => setcandidateLanguages(result.data.data));
+      .getByCandidateId(5)
+      .then((result) => setcandidateLanguages(result.data));
   }, [candidateLanguages]);
 
   const deleteLanguage = (id) => {

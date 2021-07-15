@@ -6,12 +6,17 @@ import CandidateLanguageList from "./CandidateLanguageList";
 import CandidateSchoolList from "./CandidateSchoolList"
 import ContactDetails from "./ContactDetails";
 import TechnologyList from "./TechnologyList"
+import CandidateSocialMediaList from "./CandidateSocialMediaList";
+import CandidateCoverLetterList from "./CandidateCoverLetterList";
 
 export default function CandidateFullCv() {
   return (
     <div>
       <Grid>
-        <Grid.Column width="4"> <ContactDetails/> </Grid.Column>
+        <Grid.Column width="4">
+          <Grid.Row><CandidateSocialMediaList/> </Grid.Row>
+          <Grid.Row><CandidateCoverLetterList/> </Grid.Row> 
+        </Grid.Column>
         <Grid.Column width="12">
           <Grid.Row>
             <Grid.Column width="12">

@@ -70,6 +70,7 @@ export default function EmployerDetail() {
                   <Table.HeaderCell>Çalışma Şekli</Table.HeaderCell>
                   <Table.HeaderCell>Çalışma Zamanı</Table.HeaderCell>
                   <Table.HeaderCell>Açık Pozisyon</Table.HeaderCell>
+                  <Table.HeaderCell>Konum</Table.HeaderCell>
                   <Table.HeaderCell></Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
@@ -90,6 +91,9 @@ export default function EmployerDetail() {
                     </Table.Cell>
                     <Table.Cell>
                       {jobAdvertisement.countOfOpenPosition}
+                    </Table.Cell>
+                    <Table.Cell>
+                      {jobAdvertisement.city?.city}
                     </Table.Cell>
                     <Table.Cell>
                       {" "}
