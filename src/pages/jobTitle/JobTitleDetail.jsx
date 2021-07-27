@@ -14,21 +14,6 @@ let jobAdvertisementService = new  JobAdvertisementService()
     useEffect(() => {
        jobAdvertisementService.getByJobTitle(id).then((res) => setJobTitles(res.data.data))
     }, [])
-
-    let favoriteJob = {
-      candidate: {
-        id:""
-      },
-      jobAdvertisement: {
-        id
-      }
-    }
-    const addFavoriteJob = (id) =>{
-      favoriteJob.candidate.id=5
-      favoriteJob.jobAdvertisement.id=id
-      toast.success("Favorilere Eklendi")
-      jobAdvertisementService.addFavoriteJob(favoriteJob).then((result) => console.log(result.data)); 
-    }
     return (
         <div>
              <Grid>
@@ -56,9 +41,6 @@ let jobAdvertisementService = new  JobAdvertisementService()
                   <Card.Content extra>
                     <div className="ui two buttons">
                     <Link to ={`/jobTitle/${jobTitle.id}`}><JobTitleModal/></Link>  
-                      <Button basic color="red" onClick={() => addFavoriteJob(jobTitle.id)}>
-                        Favorilere Ekle
-                      </Button>
                     </div>
                   </Card.Content>
                 </Card>

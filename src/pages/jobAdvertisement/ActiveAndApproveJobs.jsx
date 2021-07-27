@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Grid } from "semantic-ui-react";
+import { Dropdown, Grid } from "semantic-ui-react";
 import { Table, Button, Pagination, Label } from "semantic-ui-react";
 import { JobAdvertisementService } from "../../services/jobAdvertisement/jobAdvertisementService";
 import { Link } from "react-router-dom";
 import Filter from "../../layouts/Filter"
+import JobTitleModal from "../jobTitle/JobTitleModal"
 
 export default function ActiveAndApproveJobs() {
   const [jobAdvertisements, setjobAdvertisements] = useState([]);
@@ -11,15 +12,20 @@ export default function ActiveAndApproveJobs() {
 
   let jobAdvertisementService = new JobAdvertisementService();
   const [pageNo, setPageNo] = useState(1);
+  const [pageSize, setPageSize] = useState(10)
 
   useEffect(() => {
     jobAdvertisementService
-      .getByActiveAndApproved(pageNo,10,filter)
+      .getByActiveAndApproved(pageNo,pageSize,filter)
       .then((result) => setjobAdvertisements(result.data.data));
-    //pageSize = 10 pageNo=paginationdan tıklanana göre değişmeli
-  }, [pageNo, filter]);
+  }, [pageNo,pageSize, filter]);
   
-
+  const pageSizeOptions=[
+    {key:10,text:"10", value:10},
+    {key:20,text:"20", value:20},
+    {key:50,text:"50", value:50},
+    {key:100,text:"100", value:100}
+  ]
   const handdleChange = (e, page) => {
     setPageNo(page.activePage);
   };
@@ -81,11 +87,9 @@ export default function ActiveAndApproveJobs() {
                           {jobAdvertisement.countOfOpenPosition}
                         </Table.Cell>
                         <Table.Cell>
-                          <Button>
                             <Link to={`/active/${jobAdvertisement.id}`}>
-                              Detay
+                             <JobTitleModal/>
                             </Link>
-                          </Button>
                         </Table.Cell>
                       </Table.Row>
                     ))}
@@ -95,6 +99,10 @@ export default function ActiveAndApproveJobs() {
                 onPageChange={handdleChange}
                 totalPages={10}
               />
+               <Button onClick={() =>setPageSize(10)}>10</Button>
+               <Button onClick={() =>setPageSize(20)}>20</Button>
+               <Button onClick={() =>setPageSize(50)}>50</Button>
+               <Button onClick={() =>setPageSize(100)}>100</Button>
             </Table>
           </Grid.Column>
         </Grid.Row>

@@ -4,6 +4,7 @@ import { Formik, Form} from "formik";
 import {Button } from "semantic-ui-react";
 import HRMSTextInput from '../../../utilities/customFormControls/HRMSTextInput';
 import { SocialMediaService } from '../../../services/candidate/candidateSocialMediaService';
+import { toast } from 'react-toastify';
 
 export default function AddSocialMedia() {
     const initialValues = {candidateId:"5", githubLink :"", linkedinLink:""};
@@ -20,6 +21,7 @@ export default function AddSocialMedia() {
            let candidateSocialMediaService = new SocialMediaService()
            candidateSocialMediaService.add(values).then(result => console.log(result.data))
              console.log(values)
+             toast.success("Sosyal Medya eklendi")
          }}
         >
         <Form className="ui form">

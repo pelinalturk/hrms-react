@@ -5,6 +5,7 @@ import { CandidateSchoolService } from '../../../services/candidate/candidateSch
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function AddEducation() {
     let candidateSchoolService = new CandidateSchoolService()
@@ -35,6 +36,7 @@ export default function AddEducation() {
             onSubmit={(values, { resetForm, setSubmitting }) => {
               console.log(values);
                candidateSchoolService.addEducation(values).then(result => console.log(result.data))
+               toast.success("Okul eklendi.")
               setTimeout(() => {
                 resetForm();
               }, 2000);

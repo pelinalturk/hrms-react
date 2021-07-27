@@ -4,6 +4,7 @@ import { Formik, Form} from "formik";
 import {Button } from "semantic-ui-react";
 import HRMSTextInput from '../../../utilities/customFormControls/HRMSTextInput';
 import { CandidateLanguageService } from '../../../services/candidate/candidateLanguageService';
+import { toast } from 'react-toastify';
 export default function FormDeneme() {
     const initialValues = {candidateId:"5", language :"", languageLevel:""};
 
@@ -19,6 +20,7 @@ export default function FormDeneme() {
             let candidateLanguageService= new CandidateLanguageService()
             candidateLanguageService.addLanguage(values).then(result => console.log(result.data))
              console.log(values)
+             toast.success("Yabancı dil eklendi.")
          }}
         >
         <Form className="ui form">

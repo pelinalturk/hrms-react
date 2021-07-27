@@ -2,6 +2,7 @@ import React from 'react'
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { CandidateTechsService } from '../../../services/candidate/candidateTechsService';
+import { toast } from 'react-toastify';
 
 export default function AddTechs() {
     return (
@@ -19,6 +20,7 @@ export default function AddTechs() {
             console.log(values);
           let candidateTechsService = new  CandidateTechsService()
           candidateTechsService.addTechs(values).then(result => console.log(result.data))
+          toast.success("Eklendi")
               setTimeout(() => {
               resetForm();
             }, 2000);

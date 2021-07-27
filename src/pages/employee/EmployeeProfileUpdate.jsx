@@ -4,6 +4,7 @@ import { Button, Card, Image, Icon, Grid } from 'semantic-ui-react'
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import HRMSTextInput from "../../utilities/customFormControls/HRMSTextInput"
+import { toast } from 'react-toastify';
 
 export default function EmployeeProfileUpdate() {
     const initialValues = {id:"39", firstName: "", LastName: "", email: "" , photo:""};
@@ -23,6 +24,7 @@ export default function EmployeeProfileUpdate() {
           console.log(values);
           let employeeService = new EmployeeService()
           employeeService.updateProfil(values).then((result) => console.log(result.data)); 
+          toast.success("Güncelleme işlemi başarılı")
         }}
       >
         <Form className="ui form">

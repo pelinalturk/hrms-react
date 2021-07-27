@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { CandidateCvService } from "../../../services/candidate/candidateCvService";
-import { Image, Table, Header, Grid } from "semantic-ui-react";
+import { Image} from "semantic-ui-react";
 import { Card } from "semantic-ui-react";
 import ContactInformationModal from "../../candidateModals/ContactInformationModal";
 
-export default function CandidateCvList() {
+export default function ContactInformation() {
   const [candidate, setcandidate] = useState([]);
   useEffect(() => {
     let candidateCvService = new CandidateCvService();
@@ -15,7 +15,6 @@ export default function CandidateCvList() {
   return (
     <div>
       <Card.Group>
-       {/*  {candidateCvs.map((candidateCv) =>( */}
            <Card fluid>
            <Card.Content>
              <Image floated="right" size="mini" src={candidate.photo} />
@@ -30,8 +29,6 @@ export default function CandidateCvList() {
            </Card.Content>
            <ContactInformationModal />
          </Card>
-       {/*  ))} */}
-       
       </Card.Group>
     </div>
   );

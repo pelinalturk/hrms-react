@@ -5,11 +5,14 @@ import { Grid } from "semantic-ui-react";
 import SideBar from "../../layouts/SideBar";
 import { Table, Button} from "semantic-ui-react";
 import { useDispatch } from 'react-redux'
+import { toast } from "react-toastify";
 import { addToFavorite } from '../../store/actions/FavoriteActions';
+import {FavoritiesService} from '../../services/candidate/candidateFavoritiesService'
 
 export default function ActiveAndApproveJobsDetail() {
     let { id } = useParams();
     let jobAdvertisementService = new JobAdvertisementService();
+    let candidateFavoritiesService = new FavoritiesService();
 
     let favoriteJob = {
       candidate: {
@@ -19,11 +22,17 @@ export default function ActiveAndApproveJobsDetail() {
         id
       }
     }
-
     const addFavoriteJob = (id) =>{
       favoriteJob.candidate.id=5
       favoriteJob.jobAdvertisement.id=id
-      jobAdvertisementService.addFavoriteJob(favoriteJob).then((result) => console.log(result.data)); 
+      if(candidateFavoritiesService.getByJobId(id).then((result) =>console.log(result.data)) === true){
+        toast.error("Daha önce favorilere eklendi.")
+      }
+      else{
+        jobAdvertisementService.addFavoriteJob(favoriteJob).then((result) =>console.log(result.data));
+        toast.success("Favorilere Eklendi.")
+      }
+      
     }
 
    const dispatch = useDispatch()

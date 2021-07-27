@@ -3,7 +3,7 @@ import { EmployeeService } from '../../services/employee/employeeService'
 import { Card, Image, Icon } from 'semantic-ui-react'
 import UpdateRequestModal from './UpdateRequestModal'
 import {Link} from "react-router-dom"
-
+import anonEmployer from "../../images/anonEmployer.jpg"
 
 export default function UpdateRequest() {//güncelleme isteği bekleyen employer lar
     const [employers, setEmployers] = useState([])
@@ -23,7 +23,7 @@ export default function UpdateRequest() {//güncelleme isteği bekleyen employer
                          floated='right'
                          size='mini'
                          src={employer.employer?.photo === null
-                            ? "https://res.cloudinary.com/pelin/image/upload/v1625155753/66.jpg6706_pae9ox.jpg"
+                            ? anonEmployer
                             : employer.employer?.photo
                         }
                        />

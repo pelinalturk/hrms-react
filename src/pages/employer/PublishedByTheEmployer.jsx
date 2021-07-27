@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card, Image, Label } from "semantic-ui-react";
 import { JobAdvertisementService } from "../../services/jobAdvertisement/jobAdvertisementService";
+import anonEmployer from "../../images/anonEmployer.jpg"
+import { Link } from "react-router-dom";
+
 export default function PublishedByTheEmployer() {
   const [jobAdvertisements, setJobAdvertisements] = useState([]);
   let jobAdvertisementService = new JobAdvertisementService();
@@ -15,11 +18,6 @@ export default function PublishedByTheEmployer() {
       .changeIsActive(id)
       .then((result) => console.log(result.data));
   };
-  let yil = new Date().getFullYear()
-  let ay = new Date().getMonth()
-  let gun = new Date().getDate()
-  var year=new Date(yil,ay,gun)
-
   return (
       
     <div>
@@ -35,7 +33,7 @@ export default function PublishedByTheEmployer() {
                 size="mini"
                 src={
                   jobAdvertisement.employer?.photo === null
-                    ? "https://res.cloudinary.com/pelin/image/upload/v1625155753/66.jpg6706_pae9ox.jpg"
+                    ? anonEmployer
                     : jobAdvertisement.employer?.photo
                 }
               />
@@ -78,6 +76,9 @@ export default function PublishedByTheEmployer() {
                   color="purple"
                 >
                   Yayından Kaldır
+                </Button>
+                <Button>
+                 <Link to ={`/jobApplications/${jobAdvertisement.id}`}>  Başvuranlar</Link>  
                 </Button>
               </div>
             </Card.Content>

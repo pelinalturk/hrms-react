@@ -1,13 +1,32 @@
-import React, { useEffect, useState } from 'react'
-import { Card, Icon, Image, Grid } from "semantic-ui-react";
+import React, { useEffect, useState } from "react";
+import { Card, Icon, Image, Grid, Button } from "semantic-ui-react";
 import { useParams } from "react-router";
-import { JobAdvertisementService } from '../../services/jobAdvertisement/jobAdvertisementService';
-
+import { JobAdvertisementService } from "../../services/jobAdvertisement/jobAdvertisementService";
+import anonEmployer from "../../images/anonEmployer.jpg";
+import { toast } from "react-toastify";
 export default function JobTitleModalDetail() {
-    let { id } = useParams();
+  let { id } = useParams();
   const [jobAdvertisement, setjobAdvertisement] = useState({});
+  let jobAdvertisementService = new JobAdvertisementService();
 
-   useEffect(() => {
+  let favoriteJob = {
+    candidate: {
+      id: "",
+    },
+    jobAdvertisement: {
+      id,
+    },
+  };
+
+  const addFavoriteJob = (id) => {
+    favoriteJob.candidate.id = 5;
+    favoriteJob.jobAdvertisement.id = id;
+    toast.success("Favorilere Eklendi");
+    jobAdvertisementService
+      .addFavoriteJob(favoriteJob)
+      .then((result) => console.log(result.data));
+  };
+  useEffect(() => {
     let jobAdvertisementService = new JobAdvertisementService();
     jobAdvertisementService
       .getById(id)
@@ -21,7 +40,7 @@ export default function JobTitleModalDetail() {
             <Image
               src={
                 jobAdvertisement.employer?.photo === null
-                  ? "https://res.cloudinary.com/pelin/image/upload/v1625155753/66.jpg6706_pae9ox.jpg"
+                  ? anonEmployer
                   : jobAdvertisement.employer?.photo
               }
               wrapped
@@ -107,7 +126,8 @@ export default function JobTitleModalDetail() {
             }}
           ></textarea>
         </Grid.Column>
-      </Grid.Row>
+      </Grid.Row>{" "}
+      
     </Grid>
   );
 }

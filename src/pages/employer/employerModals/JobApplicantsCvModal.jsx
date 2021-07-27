@@ -1,26 +1,25 @@
 import React from 'react'
 import { Button, Modal } from "semantic-ui-react";
-import FavoritiesModalDetail from '../candidate/FavoritiesModalDetail';
+import JobApplicantsCVdetail from '../JobApplicantsCVdetail';
 
-export default function FavoritiesModal() {
+export default function JobApplicantsCVModal() {
     const [open, setOpen] = React.useState(false);
-
     return (
       <Modal
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         open={open}
-        trigger={<Button basic color="green"> Detay</Button>}
+        trigger={<Button> </Button>}
       >
-        <Modal.Header>İş Detayı</Modal.Header>
+        <Modal.Header>Cv Bilgisi</Modal.Header>
         <Modal.Content>
           <Modal.Description>
-            <FavoritiesModalDetail/>
+          <JobApplicantsCVdetail/>
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
           <Button color="black" onClick={() => setOpen(false)}>
-            Kapat
+            Vazgeç
           </Button>
         </Modal.Actions>
       </Modal>

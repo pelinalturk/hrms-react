@@ -4,6 +4,7 @@ import { Formik, Form} from "formik";
 import {Button } from "semantic-ui-react";
 import HRMSTextInput from '../../../utilities/customFormControls/HRMSTextInput';
 import { CoverLetterService } from '../../../services/candidate/candidateCoverLetterService';
+import { toast } from 'react-toastify';
 
 export default function AddCoverLetter() {
     const initialValues = {candidateId:"5", coverLetter :""};
@@ -19,6 +20,7 @@ export default function AddCoverLetter() {
            let candidateCoverLetterService = new CoverLetterService()
            candidateCoverLetterService.add(values).then(result => console.log(result.data))
              console.log(values)
+             toast.success("Ön yazı eklendi.")
          }}
         >
         <Form className="ui form">

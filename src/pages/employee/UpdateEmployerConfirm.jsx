@@ -3,6 +3,7 @@ import { Button, Card, Image, Grid, Table } from "semantic-ui-react";
 import { EmployerService } from "../../services/employer/employerService";
 import { EmployeeService } from "../../services/employee/employeeService";
 import { useParams } from "react-router";
+import { toast } from "react-toastify";
 
 export default function UpdateEmployerConfirm() {//burası tamam
   let { id } = useParams();
@@ -23,6 +24,7 @@ export default function UpdateEmployerConfirm() {//burası tamam
 
   const updateEmployerConfirm = ()=> {
     employeeService.confirmUpdate(39, id).then((result) => console.log(result.data)); 
+    toast.success("Şirketin güncelleme isteği onaylandı.")
   }
 
   return (

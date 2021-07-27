@@ -3,6 +3,7 @@ import { EmployeeService } from "../../services/employee/employeeService";
 import { Card, Image, Icon, Grid } from "semantic-ui-react";
 import UpdateModal from "./UpdateModal";
 import EmployeeSideBar from "../../layouts/EmployeeSideBar"
+import anonUser from "../../images/anonUser.png"
 
 export default function EmployeeProfile() {
   const [employee, setEmployee] = useState({});
@@ -25,7 +26,7 @@ export default function EmployeeProfile() {
               size="mini"
               src={
                 employee.photo === null
-                  ? "https://res.cloudinary.com/pelin/image/upload/v1625259339/b2a179c4-bae4-4eaa-ae2e-6a4b8b5f720a_db3mec.png"
+                  ? anonUser
                   : employee.photo
               }
             />

@@ -3,6 +3,7 @@ import * as Yup from "yup";
 import React, { useEffect, useState } from "react";
 import { JobTitleService } from "../../../services/jobAdvertisement/jobTitleService";
 import { CandidateJobExpService } from "../../../services/candidate/candidateJobExpService";
+import { toast } from "react-toastify";
 
 export default function AddJobExperience() {
   const [jobPositions, setJobPositions] = useState([]);
@@ -36,6 +37,7 @@ export default function AddJobExperience() {
               console.log(values);
               let candidateJobExpService = new CandidateJobExpService()
               candidateJobExpService.addJobExp(values).then(result => console.log(result.data))
+              toast.success("İş tecrübesi eklendi.")
               setTimeout(() => {
                 resetForm();
               }, 2000);

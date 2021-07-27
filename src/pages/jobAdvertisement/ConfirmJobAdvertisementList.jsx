@@ -30,13 +30,6 @@ export default function ConfirmJobAdvertisementList() {
       .then((result) => console.log(result.data)); 
   }
 
-  const handleConfirmFalse= (id)=>{
-    postConfirmed.jobAdvertisement.id=id
-    postConfirmed.confirmed=false
-    jobAdvertisementService
-      .changeConfirmed(postConfirmed)
-      .then((result) => console.log(result.data)); 
-  }
   return (
     <div>
       <h3>Onaylanmamış İş İlanları</h3>
@@ -65,7 +58,6 @@ export default function ConfirmJobAdvertisementList() {
             <Table.Cell>{jobAdvertisement.maxWage}</Table.Cell>
             <Table.Cell>
               <Button color={"green"} onClick={() =>handleConfirmTrue(jobAdvertisement.id)}>Onayla</Button >
-              <Button color={"red"} onClick={() =>handleConfirmFalse(jobAdvertisement.id)}  style={{ marginTop: "0.5em" }}>Reddet</Button>
             </Table.Cell>
           </Table.Row>
         ))}

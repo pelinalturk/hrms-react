@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Modal } from "semantic-ui-react";
-import ContactInformation from "../candidate/ContactInformation";
+import AddContactInformation from "../candidate/add/AddContactInformation";
 export default function ContactInformationModal() {
   const [open, setOpen] = React.useState(false);
   return (
@@ -13,7 +13,7 @@ export default function ContactInformationModal() {
       <Modal.Header>İletişim Bilgilerini Düzenle</Modal.Header>
       <Modal.Content>
         <Modal.Description>
-          <ContactInformation />
+          <AddContactInformation />
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>

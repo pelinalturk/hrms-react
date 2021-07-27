@@ -1,9 +1,9 @@
 import { Formik } from "formik";
 import * as Yup from "yup";
 import React from "react";
-import { CandidateCvService } from "../../services/candidate/candidateCvService";
+import { CandidateCvService } from "../../../services/candidate/candidateCvService";
 
-export default function ContactInformation() {
+export default function AddContactInformation() {
   return (//foto 
     <div> 
       <div>

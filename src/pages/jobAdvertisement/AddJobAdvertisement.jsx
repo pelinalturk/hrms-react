@@ -7,6 +7,7 @@ import { MannerOfWorkService } from "../../services/jobAdvertisement/mannerOfWor
 import { JobTitleService } from "../../services/jobAdvertisement/jobTitleService";
 import { PositionLevelService } from "../../services/jobAdvertisement/jobPositionLevelService";
 import { JobAdvertisementService } from "../../services/jobAdvertisement/jobAdvertisementService";
+import { toast } from "react-toastify";
 
 export default function AddJobAdvertisement() {
 
@@ -51,6 +52,7 @@ export default function AddJobAdvertisement() {
     jobPositionLevelService
       .getPositionLevel()
       .then((result) => setjobPositionLevels(result.data.data));
+      toast.success("İş İlanı Eklendi !")
   }, []);
 
   return (

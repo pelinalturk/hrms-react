@@ -12,4 +12,8 @@ export class FavoritiesService{
     deleteFavority(id){
         return axios.delete(`http://localhost:8080/api/candidateFavoritiesController/${id}`)
     }
+
+    getByJobId(id){
+        return axios.get("http://localhost:8080/api/candidateFavoritiesController/getByJobId?id="+id)
+    }
 }

@@ -16,4 +16,8 @@ export class EmployerService{
     getByIsActiveTrueIsConfirmFalse(){
         return axios.get("http://localhost:8080/api/employers/IsActiveTrueIsConfirmFalse")
     }
+    getByJobApplicants(id)//employer Id
+    {
+        return axios.get("http://localhost:8080/api/candidateJobApplicationsController/getByEmployer?id=" +id)
+    }
 }

@@ -17,10 +17,10 @@ export default function EmployerProfile() {
                 </Grid.Row>
                 <Grid.Row>
                 <Grid.Column width="2"></Grid.Column>
-                <Grid.Column width="12">
+                <Grid.Column width="14">
                     <PublishedByTheEmployer/>
                 </Grid.Column>
-                <Grid.Column width="2"></Grid.Column>
+               
                 </Grid.Row>
             </Grid>
         </div>
